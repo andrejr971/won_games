@@ -10,6 +10,7 @@ export type ButtonProps = {
   fullWidth?: boolean;
   icon?: React.ReactNode;
   as?: React.ElementType;
+  minimal?: boolean;
 } & ButtonType;
 
 export default function Button({
@@ -18,6 +19,7 @@ export default function Button({
   fullWidth = false,
   icon,
   as,
+  minimal = false,
   ...props
 }: ButtonProps) {
   return (
@@ -26,6 +28,7 @@ export default function Button({
       size={size}
       fullWidth={fullWidth}
       hasIcon={!!icon}
+      minimal={minimal}
       {...props}
     >
       {icon}
