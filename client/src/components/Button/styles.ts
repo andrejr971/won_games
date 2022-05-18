@@ -2,7 +2,10 @@ import styled, { css, DefaultTheme } from 'styled-components';
 import { darken } from 'polished';
 import { ButtonProps } from '.';
 
-type WrapperPops = Pick<ButtonProps, 'size' | 'fullWidth' | 'minimal'> & {
+export type WrapperProps = Pick<
+  ButtonProps,
+  'size' | 'fullWidth' | 'minimal'
+> & {
   hasIcon: boolean;
 };
 
@@ -45,7 +48,7 @@ const wrapperModifiers = {
   `,
 };
 
-export const Wrapper = styled.button<WrapperPops>`
+export const Wrapper = styled.button<WrapperProps>`
   ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
 
