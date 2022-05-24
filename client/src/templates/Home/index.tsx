@@ -1,18 +1,12 @@
 import { BannerProps } from 'components/Banner';
 import BannerSlider from 'components/BannerSlider';
 import { Container } from 'components/Container';
-import Footer from 'components/Footer';
 import { GameCardProps } from 'components/GameCard';
 import { HighlightProps } from 'components/Highlight';
-import { Menu } from 'components/Menu';
 import Showcase from 'components/Showcase';
+import Base from 'templates/Base';
 
-import {
-  SectionBanner,
-  SectionFooter,
-  SectionNews,
-  SectionUpcoming,
-} from './styles';
+import { SectionBanner, SectionNews, SectionUpcoming } from './styles';
 
 export type HomeTemplateProps = {
   banners: BannerProps[];
@@ -38,10 +32,8 @@ export function Home({
   upcommingMoreGames,
 }: HomeTemplateProps) {
   return (
-    <section>
+    <Base>
       <Container>
-        <Menu />
-
         <SectionBanner>
           <BannerSlider items={banners} />
         </SectionBanner>
@@ -67,12 +59,6 @@ export function Home({
         highlight={freeHighligth}
         games={freeGames}
       />
-
-      <SectionFooter>
-        <Container>
-          <Footer />
-        </Container>
-      </SectionFooter>
-    </section>
+    </Base>
   );
 }
