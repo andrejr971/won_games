@@ -18,7 +18,7 @@ export type GameInfoProps = {
 export default function GameInfo({ title, price, description }: GameInfoProps) {
   return (
     <Wrapper>
-      <Heading color="black" lineBottom lineColor="secondary">
+      <Heading color="black" lineBottom lineColor="primary">
         {title}
       </Heading>
 

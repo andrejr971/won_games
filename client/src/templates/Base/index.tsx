@@ -1,7 +1,8 @@
 import { Container } from 'components/Container';
 import Footer from 'components/Footer';
 import { Menu } from 'components/Menu';
-import { SectionFooter } from './styles';
+
+import { Content, SectionFooter, Wrapper } from './styles';
 
 export type BaseTemplateProps = {
   children: React.ReactNode;
@@ -9,18 +10,18 @@ export type BaseTemplateProps = {
 
 export default function Base({ children }: BaseTemplateProps) {
   return (
-    <section>
+    <Wrapper>
       <Container>
         <Menu />
       </Container>
 
-      {children}
+      <Content>{children}</Content>
 
       <SectionFooter>
         <Container>
           <Footer />
         </Container>
       </SectionFooter>
-    </section>
+    </Wrapper>
   );
 }
