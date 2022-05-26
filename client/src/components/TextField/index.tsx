@@ -5,7 +5,6 @@ import { Error, Icon, Input, InputWrapper, Label, Wrapper } from './styles';
 export type TextFieldProps = {
   onInput?: (value: string) => void;
   label?: string;
-  labelFor?: string;
   initialValue?: string;
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
@@ -15,9 +14,9 @@ export type TextFieldProps = {
 
 export default function TextField({
   label,
-  labelFor = '',
   initialValue = '',
   onInput,
+  name,
   icon,
   iconPosition = 'left',
   disabled = false,
@@ -35,7 +34,7 @@ export default function TextField({
 
   return (
     <Wrapper disabled={disabled} error={!!error}>
-      {!!label && <Label htmlFor={labelFor}>{label}</Label>}
+      {!!label && <Label htmlFor={name}>{label}</Label>}
       <InputWrapper>
         {!!icon && <Icon iconPosition={iconPosition}> {icon}</Icon>}
 
@@ -45,6 +44,8 @@ export default function TextField({
           onChange={onChange}
           value={value}
           disabled={disabled}
+          name={name}
+          {...(label ? { id: name } : {})}
           {...props}
         />
       </InputWrapper>
