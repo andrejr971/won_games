@@ -39,13 +39,21 @@ export function Menu({ username }: MenuProps) {
       </MediaMatch>
 
       <LogoWrapper>
-        <Logo hideOnMobile />
+        <Link href="/" passHref>
+          <a>
+            <Logo hideOnMobile />
+          </a>
+        </Link>
       </LogoWrapper>
 
       <MediaMatch greaterThan="medium">
         <MenuNav>
-          <MenuLink href="#">Home</MenuLink>
-          <MenuLink href="#">Explore</MenuLink>
+          <Link href="/" passHref>
+            <MenuLink>Home</MenuLink>
+          </Link>
+          <Link href="/games" passHref>
+            <MenuLink>Explore</MenuLink>
+          </Link>
         </MenuNav>
       </MediaMatch>
 

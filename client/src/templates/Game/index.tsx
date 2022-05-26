@@ -1,3 +1,4 @@
+import { Divider } from 'components/Divider';
 import Gallery, { GalleryImageProps } from 'components/Gallery';
 import { GameCardProps } from 'components/GameCard';
 import GameDetails, { GameDetailsProps } from 'components/GameDetails';
@@ -57,6 +58,7 @@ export default function Game({
 
         <SectionGameDetails>
           <GameDetails {...details} />
+          <Divider />
         </SectionGameDetails>
 
         <Showcase
