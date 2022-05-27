@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+
 import { Home, HomeTemplateProps } from 'templates/Home';
 
 import bannersMock from 'components/BannerSlider/mock';
@@ -9,7 +10,9 @@ export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />;
 }
 
-export const getServerSideProps: GetServerSideProps<HomeTemplateProps> = async () => {
+export const getServerSideProps: GetServerSideProps<
+  HomeTemplateProps
+> = async () => {
   return {
     props: {
       banners: bannersMock,
