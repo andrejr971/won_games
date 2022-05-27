@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2';
-import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart';
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search';
 
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
@@ -10,6 +9,9 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 import Logo from 'components/Logo';
 import Button from 'components/Button';
 import MediaMatch from 'components/MediaMatch';
+
+import CartDropdown from 'components/CartDropdown';
+import UserDropdown from 'components/UserDropdown';
 
 import {
   CreateAccount,
@@ -22,6 +24,7 @@ import {
   RegisterBox,
   Wrapper,
 } from './styles';
+import CartIcon from 'components/CartIcon';
 
 export type MenuProps = {
   username?: string;
@@ -34,7 +37,7 @@ export function Menu({ username }: MenuProps) {
     <Wrapper>
       <MediaMatch lessThan="medium">
         <IconWrapper onClick={() => setIsOpen(true)}>
-          <MenuIcon aria-label="Open menu" />
+          <MenuIcon aria-label="Open Menu" />
         </IconWrapper>
       </MediaMatch>
 
@@ -59,33 +62,49 @@ export function Menu({ username }: MenuProps) {
 
       <MenuGroup>
         <IconWrapper>
-          <SearchIcon aria-label="search" />
+          <SearchIcon aria-label="Search" />
         </IconWrapper>
-
         <IconWrapper>
-          <ShoppingCartIcon aria-label="Open shopping cart" />
-        </IconWrapper>
-
-        {!username && (
           <MediaMatch greaterThan="medium">
+            <CartDropdown />
+          </MediaMatch>
+          <MediaMatch lessThan="medium">
+            <Link href="/cart">
+              <a>
+                <CartIcon />
+              </a>
+            </Link>
+          </MediaMatch>
+        </IconWrapper>
+        <MediaMatch greaterThan="medium">
+          {!username ? (
             <Link href="/sign-in" passHref>
               <Button as="a">Sign in</Button>
             </Link>
-          </MediaMatch>
-        )}
+          ) : (
+            <UserDropdown username={username} />
+          )}
+        </MediaMatch>
       </MenuGroup>
 
       <MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
         <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
-
         <MenuNav>
-          <MenuLink href="#">Home</MenuLink>
-          <MenuLink href="#">Explore</MenuLink>
+          <Link href="/" passHref>
+            <MenuLink>Home</MenuLink>
+          </Link>
+          <Link href="/games" passHref>
+            <MenuLink>Explore</MenuLink>
+          </Link>
 
           {!!username && (
             <>
-              <MenuLink href="#">My account</MenuLink>
-              <MenuLink href="#">Wishlist</MenuLink>
+              <Link href="/profile/me" passHref>
+                <MenuLink>My profile</MenuLink>
+              </Link>
+              <Link href="/profile/wishlist" passHref>
+                <MenuLink>Wishlist</MenuLink>
+              </Link>
             </>
           )}
         </MenuNav>
@@ -97,9 +116,7 @@ export function Menu({ username }: MenuProps) {
                 Sign in
               </Button>
             </Link>
-
             <span>or</span>
-
             <Link href="/sign-up" passHref>
               <CreateAccount title="Sign Up">Sign Up</CreateAccount>
             </Link>
