@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import media from 'styled-media-query';
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -12,4 +12,19 @@ export const Content = styled.div`
       grid-template-columns: 2fr 1fr;
     `}
   `}
-`;
+`
+
+export const Text = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.gray};
+
+    a {
+      color: ${theme.colors.primary};
+      text-decoration: none;
+    }
+
+    svg {
+      color: ${theme.colors.primary};
+    }
+  `}
+`

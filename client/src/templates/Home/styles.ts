@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
-import media from 'styled-media-query';
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
-import * as HeadingStyles from 'components/Heading/styles';
-import * as HighlightStyles from 'components/Highlight/styles';
+import * as HeadingStyles from 'components/Heading/styles'
+import * as HighlightStyles from 'components/Highlight/styles'
 
 export const SectionBanner = styled.section`
   ${({ theme }) => css`
@@ -14,7 +14,7 @@ export const SectionBanner = styled.section`
       z-index: ${theme.layers.base};
     `}
   `}
-`;
+`
 
 export const SectionNews = styled.div`
   ${({ theme }) => css`
@@ -24,18 +24,19 @@ export const SectionNews = styled.div`
       margin-top: -13rem;
     `}
 
-    padding-top: 14rem;
-    padding-bottom: 10rem;
-    background-color: ${theme.colors.lightBg};
-    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
-
     ${media.greaterThan('medium')`
+      margin-bottom: 0;
+      padding-top: 14rem;
+      padding-bottom: 10rem;
+      background-color: ${theme.colors.lightBg};
+      clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+
       ${HeadingStyles.Wrapper} {
         color: ${theme.colors.black};
       }
     `}
   `}
-`;
+`
 
 export const SectionUpcoming = styled.div`
   ${({ theme }) => css`
@@ -43,4 +44,4 @@ export const SectionUpcoming = styled.div`
       margin-top: calc(${theme.spacings.xlarge} * 2);
     }
   `}
-`;
+`

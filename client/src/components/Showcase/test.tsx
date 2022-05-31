@@ -1,73 +1,69 @@
-import 'match-media-mock';
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
+import 'match-media-mock'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from 'utils/tests/helpers'
 
-import gamesMock from 'components/GameCardSlider/mock';
-import highlightMock from 'components/Highlight/mock';
+import gamesMock from 'components/GameCardSlider/mock'
+import highlightMock from 'components/Highlight/mock'
 
-import Showcase from '.';
+import Showcase from '.'
 
 const props = {
   title: 'Most Popular',
   highlight: highlightMock,
-  games: gamesMock.slice(0, 1),
-};
+  games: gamesMock.slice(0, 1)
+}
 
 describe('<Showcase />', () => {
   it('should render full showcase', () => {
-    const { container } = renderWithTheme(<Showcase {...props} />);
-
-    // screen.logTestingPlaygroundURL();
+    renderWithTheme(<Showcase {...props} />)
 
     expect(
-      screen.getByRole('heading', { name: /Most Popular/i }),
-    ).toBeInTheDocument();
+      screen.getByRole('heading', { name: /most popular/i })
+    ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: highlightMock.title }),
-    ).toBeInTheDocument();
+      screen.getByRole('heading', { name: highlightMock.title })
+    ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: gamesMock[0].title }),
-    ).toBeInTheDocument();
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
+      screen.getByRole('heading', { name: gamesMock[0].title })
+    ).toBeInTheDocument()
+  })
 
   it('should render without title', () => {
     renderWithTheme(
-      <Showcase games={props.games} highlight={props.highlight} />,
-    );
+      <Showcase games={props.games} highlight={props.highlight} />
+    )
 
-    screen.getByRole('heading', { name: highlightMock.title });
-    screen.getByRole('heading', { name: gamesMock[0].title });
+    screen.getByRole('heading', { name: highlightMock.title })
+    screen.getByRole('heading', { name: gamesMock[0].title })
 
     expect(
-      screen.queryByRole('heading', { name: /most popular/i }),
-    ).not.toBeInTheDocument();
-  });
+      screen.queryByRole('heading', { name: /most popular/i })
+    ).not.toBeInTheDocument()
+  })
 
   it('should render without highlight', () => {
-    renderWithTheme(<Showcase title={props.title} games={props.games} />);
+    renderWithTheme(<Showcase title={props.title} games={props.games} />)
 
-    screen.getByRole('heading', { name: /most popular/i });
-    screen.getByRole('heading', { name: gamesMock[0].title });
+    screen.getByRole('heading', { name: /most popular/i })
+    screen.getByRole('heading', { name: gamesMock[0].title })
 
     expect(
-      screen.queryByRole('heading', { name: highlightMock.title }),
-    ).not.toBeInTheDocument();
-  });
+      screen.queryByRole('heading', { name: highlightMock.title })
+    ).not.toBeInTheDocument()
+  })
 
   it('should render without games', () => {
     renderWithTheme(
-      <Showcase title={props.title} highlight={props.highlight} />,
-    );
+      <Showcase title={props.title} highlight={props.highlight} />
+    )
 
-    screen.getByRole('heading', { name: /most popular/i });
-    screen.getByRole('heading', { name: highlightMock.title });
+    screen.getByRole('heading', { name: /most popular/i })
+    screen.getByRole('heading', { name: highlightMock.title })
 
     expect(
-      screen.queryByRole('heading', { name: gamesMock[0].title }),
-    ).not.toBeInTheDocument();
-  });
-});
+      screen.queryByRole('heading', { name: gamesMock[0].title })
+    ).not.toBeInTheDocument()
+  })
+})

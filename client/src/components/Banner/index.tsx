@@ -1,45 +1,46 @@
-import Button from 'components/Button';
-import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon';
-import { Caption, Image, Subtitle, Title, Wrapper } from './styles';
+import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
+import Button from 'components/Button'
+
+import * as S from './styles'
 
 export type BannerProps = {
-  img: string;
-  title: string;
-  subtitle: string;
-  buttonLabel: string;
-  buttonLink: string;
-  ribbon?: React.ReactNode;
-  ribbonColor?: RibbonColors;
-  ribbonSize?: RibbonSizes;
-};
+  img: string
+  title: string
+  subtitle: string
+  buttonLabel: string
+  buttonLink: string
+  ribbon?: React.ReactNode
+  ribbonColor?: RibbonColors
+  ribbonSize?: RibbonSizes
+}
 
-export default function Banner({
+const Banner = ({
   img,
   title,
   subtitle,
   buttonLabel,
   buttonLink,
   ribbon,
-  ribbonColor,
-  ribbonSize,
-}: BannerProps) {
-  return (
-    <Wrapper>
-      <Image src={img} role="img" aria-label={title} />
+  ribbonColor = 'primary',
+  ribbonSize = 'normal'
+}: BannerProps) => (
+  <S.Wrapper>
+    {!!ribbon && (
+      <Ribbon color={ribbonColor} size={ribbonSize}>
+        {ribbon}
+      </Ribbon>
+    )}
 
-      <Caption>
-        <Title>{title}</Title>
-        <Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />
-        <Button as="a" href={buttonLink} size="large">
-          {buttonLabel}
-        </Button>
-      </Caption>
+    <S.Image src={img} role="img" aria-label={title} />
 
-      {!!ribbon && (
-        <Ribbon color={ribbonColor} size={ribbonSize}>
-          {ribbon}
-        </Ribbon>
-      )}
-    </Wrapper>
-  );
-}
+    <S.Caption>
+      <S.Title>{title}</S.Title>
+      <S.Subtitle dangerouslySetInnerHTML={{ __html: subtitle }} />
+      <Button as="a" href={buttonLink} size="large">
+        {buttonLabel}
+      </Button>
+    </S.Caption>
+  </S.Wrapper>
+)
+
+export default Banner

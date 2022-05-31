@@ -1,14 +1,17 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Wrapper = styled.section`
   .slick-slider {
     position: relative;
+
     display: block;
     box-sizing: border-box;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
     -webkit-touch-callout: none;
     -khtml-user-select: none;
     -ms-touch-action: pan-y;
@@ -18,16 +21,16 @@ export const Wrapper = styled.section`
 
   .slick-list {
     position: relative;
+
     display: block;
     overflow: hidden;
+
     margin: 0;
     padding: 0;
   }
-
   .slick-list:focus {
     outline: none;
   }
-
   .slick-list.dragging {
     cursor: pointer;
     cursor: hand;
@@ -46,19 +49,18 @@ export const Wrapper = styled.section`
     position: relative;
     top: 0;
     left: 0;
+
     display: block;
   }
-
   .slick-track:before,
   .slick-track:after {
     display: table;
+
     content: '';
   }
-
   .slick-track:after {
     clear: both;
   }
-
   .slick-loading .slick-track {
     visibility: hidden;
   }
@@ -66,41 +68,36 @@ export const Wrapper = styled.section`
   .slick-slide {
     display: none;
     float: left;
+
     height: 100%;
     min-height: 1px;
   }
-
   [dir='rtl'] .slick-slide {
     float: right;
   }
-
   .slick-slide img {
     display: block;
   }
-
   .slick-slide.slick-loading img {
     display: none;
   }
-
   .slick-slide.dragging img {
     pointer-events: none;
   }
-
   .slick-initialized .slick-slide {
     display: block;
   }
-
   .slick-loading .slick-slide {
     visibility: hidden;
   }
-
   .slick-vertical .slick-slide {
     display: block;
+
     height: auto;
+
     border: 1px solid transparent;
   }
-
   .slick-arrow.slick-hidden {
     display: none;
   }
-`;
+`

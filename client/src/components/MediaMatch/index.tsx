@@ -1,29 +1,28 @@
-import styled, { css } from 'styled-components';
-import media, { DefaultBreakpoints } from 'styled-media-query';
+import styled, { css } from 'styled-components'
+import media, { DefaultBreakpoints } from 'styled-media-query'
+
+type breakpoint = keyof DefaultBreakpoints
 
 export type MediaMatchProps = {
-  lessThan?: keyof DefaultBreakpoints;
-  greaterThan?: keyof DefaultBreakpoints;
-};
+  lessThan?: breakpoint
+  greaterThan?: breakpoint
+}
 
 const mediaMatchModifiers = {
-  lessThan: (size: keyof DefaultBreakpoints) => css`
-    ${media.lessThan(size)`
-      display: block;
-    `}
+  lessThan: (size: breakpoint) => css`
+    ${media.lessThan(size)` display: block `}
   `,
-  greaterThan: (size: keyof DefaultBreakpoints) => css`
-    ${media.greaterThan(size)`
-      display: block;
-    `}
-  `,
-};
+
+  greaterThan: (size: breakpoint) => css`
+    ${media.greaterThan(size)` display: block `}
+  `
+}
 
 export default styled.div<MediaMatchProps>`
   ${({ lessThan, greaterThan }) => css`
     display: none;
 
-    ${!!lessThan && mediaMatchModifiers.lessThan(lessThan)};
-    ${!!greaterThan && mediaMatchModifiers.greaterThan(greaterThan)};
+    ${!!lessThan && mediaMatchModifiers.lessThan(lessThan)}
+    ${!!greaterThan && mediaMatchModifiers.greaterThan(greaterThan)}
   `}
-`;
+`

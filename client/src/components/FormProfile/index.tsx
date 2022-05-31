@@ -1,46 +1,49 @@
-import Button from 'components/Button';
-import Heading from 'components/Heading';
-import TextField from 'components/TextField';
+import Button from 'components/Button'
+import Heading from 'components/Heading'
+import TextField from 'components/TextField'
 
-import { Form } from './styles';
+import * as S from './styles'
 
-export default function FormProfile() {
-  return (
-    <>
-      <Heading lineBottom lineColor="primary" color="black" size="small">
-        My profile
-      </Heading>
+const FormProfile = () => (
+  <>
+    <Heading lineBottom color="black" size="small">
+      My profile
+    </Heading>
 
-      <Form>
-        <TextField
-          name="name"
-          placeholder="Nome"
-          label="Name"
-          initialValue="John Cage"
-        />
-        <TextField
-          name="email"
-          placeholder="E-mail"
-          label="E-mail"
-          type="email"
-          initialValue="johncage@gmail.com"
-          disabled
-        />
-        <TextField
-          name="password"
-          placeholder="Type your password"
-          label="Password"
-          type="password"
-        />
-        <TextField
-          name="new_password"
-          placeholder="New password"
-          label="New password"
-          type="password"
-        />
+    <S.Form>
+      <TextField
+        name="name"
+        placeholder="Name"
+        label="Name"
+        initialValue="John Doe"
+      />
 
-        <Button size="large">Save</Button>
-      </Form>
-    </>
-  );
-}
+      <TextField
+        name="email"
+        type="email"
+        placeholder="E-mail"
+        initialValue="johndoe@gmail.com"
+        label="E-mail"
+        disabled
+      />
+
+      <TextField
+        name="password"
+        type="password"
+        placeholder="Type your password"
+        label="Password"
+      />
+
+      <TextField
+        name="new_password"
+        type="password"
+        placeholder="New password"
+        label="New password"
+      />
+
+      <Button size="large">Save</Button>
+    </S.Form>
+  </>
+)
+
+export default FormProfile

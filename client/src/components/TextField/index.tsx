@@ -1,56 +1,56 @@
-import { useState, InputHTMLAttributes } from 'react';
+import { useState, InputHTMLAttributes } from 'react'
 
-import { Error, Icon, Input, InputWrapper, Label, Wrapper } from './styles';
+import * as S from './styles'
 
 export type TextFieldProps = {
-  onInput?: (value: string) => void;
-  label?: string;
-  initialValue?: string;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-  disabled?: boolean;
-  error?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+  onInput?: (value: string) => void
+  label?: string
+  initialValue?: string
+  icon?: React.ReactNode
+  iconPosition?: 'left' | 'right'
+  disabled?: boolean
+  error?: string
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'onInput'>
 
-export default function TextField({
-  label,
-  initialValue = '',
-  onInput,
-  name,
+const TextField = ({
   icon,
   iconPosition = 'left',
-  disabled = false,
+  label,
+  name,
+  initialValue = '',
   error,
+  disabled = false,
+  onInput,
   ...props
-}: TextFieldProps) {
-  const [value, setValue] = useState(initialValue);
+}: TextFieldProps) => {
+  const [value, setValue] = useState(initialValue)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value;
-    setValue(newValue);
+    const newValue = e.currentTarget.value
+    setValue(newValue)
 
-    !!onInput && onInput(newValue);
-  };
+    !!onInput && onInput(newValue)
+  }
 
   return (
-    <Wrapper disabled={disabled} error={!!error}>
-      {!!label && <Label htmlFor={name}>{label}</Label>}
-      <InputWrapper>
-        {!!icon && <Icon iconPosition={iconPosition}> {icon}</Icon>}
-
-        <Input
+    <S.Wrapper disabled={disabled} error={!!error}>
+      {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
+      <S.InputWrapper>
+        {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
+        <S.Input
           type="text"
-          iconPosition={iconPosition}
           onChange={onChange}
           value={value}
+          iconPosition={iconPosition}
           disabled={disabled}
           name={name}
           {...(label ? { id: name } : {})}
           {...props}
         />
-      </InputWrapper>
-
-      {!!error && <Error>{error}</Error>}
-    </Wrapper>
-  );
+      </S.InputWrapper>
+      {!!error && <S.Error>{error}</S.Error>}
+    </S.Wrapper>
+  )
 }
+
+export default TextField

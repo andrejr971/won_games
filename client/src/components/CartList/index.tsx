@@ -1,47 +1,43 @@
-import Button from 'components/Button';
-import Empty from 'components/Empty';
-import GameItem, { GameItemProps } from 'components/GameItem';
-import Link from 'next/link';
+import Link from 'next/link'
+import Button from 'components/Button'
+import GameItem, { GameItemProps } from 'components/GameItem'
 
-import { Wrapper, Footer, Total } from './styles';
+import * as S from './styles'
+import Empty from 'components/Empty'
 
 export type CartListProps = {
-  items?: GameItemProps[];
-  total?: string;
-  hasButton?: boolean;
-};
-
-export default function CartList({
-  items = [],
-  total,
-  hasButton,
-}: CartListProps) {
-  return (
-    <Wrapper isEmpty={!items.length}>
-      {items.length ? (
-        <>
-          {items.map(item => (
-            <GameItem key={item.title} {...item} />
-          ))}
-
-          <Footer>
-            {!hasButton && <span>Total:</span>}
-            <Total>{total}</Total>
-
-            {hasButton && (
-              <Link href="/cart">
-                <Button as="a">Buy it now</Button>
-              </Link>
-            )}
-          </Footer>
-        </>
-      ) : (
-        <Empty
-          title="Your cart is empty"
-          description="Go back to the store and explore great games and offers."
-          hasLink
-        />
-      )}
-    </Wrapper>
-  );
+  items?: GameItemProps[]
+  total?: string
+  hasButton?: boolean
 }
+
+const CartList = ({ items = [], total, hasButton = false }: CartListProps) => (
+  <S.Wrapper isEmpty={!items.length}>
+    {items.length ? (
+      <>
+        {items.map((item) => (
+          <GameItem key={item.title} {...item} />
+        ))}
+
+        <S.Footer>
+          {!hasButton && <span>Total:</span>}
+          <S.Total>{total}</S.Total>
+
+          {hasButton && (
+            <Link href="/cart">
+              <Button as="a">Buy it now</Button>
+            </Link>
+          )}
+        </S.Footer>
+      </>
+    ) : (
+      <Empty
+        title="Your cart is empty"
+        description="Go back to the store and explore great games and offers."
+        hasLink
+      />
+    )}
+  </S.Wrapper>
+)
+
+export default CartList

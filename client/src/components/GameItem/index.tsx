@@ -1,72 +1,62 @@
-import { Download } from '@styled-icons/boxicons-solid/Download';
+import { Download } from '@styled-icons/boxicons-solid/Download'
+
+import * as S from './styles'
 
 export type PaymentInfoProps = {
-  number: string;
-  flag: string;
-  img: string;
-  purchaseDate: string;
-};
+  number: string
+  flag: string
+  img: string
+  purchaseDate: string
+}
 
 export type GameItemProps = {
-  img: string;
-  title: string;
-  price: string;
-  downloadLink?: string;
-  paymentInfo?: PaymentInfoProps;
-};
+  img: string
+  title: string
+  price: string
+  downloadLink?: string
+  paymentInfo?: PaymentInfoProps
+}
 
-import {
-  CardInfo,
-  Content,
-  DownloadLink,
-  GameContent,
-  ImageBox,
-  PaymentContent,
-  Price,
-  Title,
-  Wrapper,
-} from './styles';
-
-export default function GameItem({
+const GameItem = ({
   img,
   title,
   price,
   downloadLink,
-  paymentInfo,
-}: GameItemProps) {
-  return (
-    <Wrapper>
-      <GameContent>
-        <ImageBox>
-          <img src={img} alt={title} />
-        </ImageBox>
+  paymentInfo
+}: GameItemProps) => (
+  <S.Wrapper>
+    <S.GameContent>
+      <S.ImageBox>
+        <img src={img} alt={title} />
+      </S.ImageBox>
 
-        <Content>
-          <Title>
-            {title}
-            {!!downloadLink && (
-              <DownloadLink
-                href={downloadLink}
-                target="_blank"
-                aria-label={`Get ${title} here`}
-              >
-                <Download size={22} />
-              </DownloadLink>
-            )}
-          </Title>
-          <Price>{price}</Price>
-        </Content>
-      </GameContent>
+      <S.Content>
+        <S.Title>
+          {title}
+          {!!downloadLink && (
+            <S.DownloadLink
+              href={downloadLink}
+              target="_blank"
+              aria-label={`Get ${title} here`}
+            >
+              <Download size={22} />
+            </S.DownloadLink>
+          )}
+        </S.Title>
+        <S.Price>{price}</S.Price>
+      </S.Content>
+    </S.GameContent>
 
-      {!!paymentInfo && (
-        <PaymentContent>
-          <p>{paymentInfo.purchaseDate}</p>
-          <CardInfo>
-            <span>{paymentInfo.number}</span>
-            <img src={paymentInfo.img} alt={paymentInfo.flag} />
-          </CardInfo>
-        </PaymentContent>
-      )}
-    </Wrapper>
-  );
-}
+    {!!paymentInfo && (
+      <S.PaymentContent>
+        <p>{paymentInfo.purchaseDate}</p>
+        <S.CardInfo>
+          <span>{paymentInfo.number}</span>
+          <img src={paymentInfo.img} alt={paymentInfo.flag} />
+        </S.CardInfo>
+      </S.PaymentContent>
+    )}
+  </S.Wrapper>
+)
+
+export default GameItem

@@ -1,21 +1,4 @@
-import styled, { css } from 'styled-components';
-
-type WrapperProps = {
-  isOpen?: boolean;
-};
-
-const wrapperModifiers = {
-  open: () => css`
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  `,
-  close: () => css`
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-2rem);
-  `,
-};
+import styled, { css } from 'styled-components'
 
 export const Title = styled.div`
   ${({ theme }) => css`
@@ -26,7 +9,7 @@ export const Title = styled.div`
     align-items: center;
     padding-right: 2.4rem;
   `}
-`;
+`
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -48,7 +31,24 @@ export const Content = styled.div`
       right: 2.4rem;
     }
   `}
-`;
+`
+
+type WrapperProps = {
+  isOpen?: boolean
+}
+
+const wrapperModifiers = {
+  open: () => css`
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  `,
+  close: () => css`
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-2rem);
+  `
+}
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isOpen }) => css`
@@ -57,8 +57,9 @@ export const Wrapper = styled.div<WrapperProps>`
 
     ${Content} {
       transition: transform 0.2s ease-in, opacity ${theme.transition.default};
+
       ${isOpen && wrapperModifiers.open()}
       ${!isOpen && wrapperModifiers.close()}
     }
   `}
-`;
+`

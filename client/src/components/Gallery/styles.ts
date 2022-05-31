@@ -1,42 +1,18 @@
-import styled, { css } from 'styled-components';
-
-import media from 'styled-media-query';
-
-type ModalProps = {
-  isOpen: boolean;
-};
-
-const modalModifiers = {
-  open: () => css`
-    opacity: 1;
-  `,
-
-  close: () => css`
-    opacity: 0;
-    pointer-events: none;
-  `,
-};
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     .slick-prev,
     .slick-next {
       display: block;
-
       color: ${theme.colors.white};
-
       cursor: pointer;
-
       position: absolute;
-
       top: 50%;
-
       width: 2.5rem;
-
       height: 2.5rem;
-
       padding: 0;
-
       transform: translate(0, -50%);
     }
 
@@ -55,7 +31,6 @@ export const Wrapper = styled.div`
 
     .slick-slide > div {
       margin: 0 ${theme.spacings.xsmall};
-
       cursor: pointer;
     }
 
@@ -64,12 +39,25 @@ export const Wrapper = styled.div`
     }
 
     ${media.lessThan('huge')`
-
       overflow-x: hidden;
-
     `}
   `}
-`;
+`
+
+type ModalProps = {
+  isOpen: boolean
+}
+
+const modalModifiers = {
+  open: () => css`
+    opacity: 1;
+  `,
+
+  close: () => css`
+    opacity: 0;
+    pointer-events: none;
+  `
+}
 
 export const Modal = styled.div<ModalProps>`
   ${({ theme, isOpen }) => css`
@@ -88,7 +76,7 @@ export const Modal = styled.div<ModalProps>`
     ${isOpen && modalModifiers.open()}
     ${!isOpen && modalModifiers.close()}
   `}
-`;
+`
 
 export const Close = styled.div`
   ${({ theme }) => css`
@@ -101,9 +89,9 @@ export const Close = styled.div`
     height: 100%;
     text-align: right;
   `}
-`;
+`
 
 export const Content = styled.div`
   max-width: min(120rem, 100%);
   max-height: 80rem;
-`;
+`

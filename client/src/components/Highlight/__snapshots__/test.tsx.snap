@@ -56,8 +56,8 @@ exports[`<Highlight /> should render headings and button 1`] = `
 }
 
 .c2 {
+  grid-area: content;
   z-index: 10;
-  text-align: right;
   padding: 1.6rem;
 }
 
@@ -101,7 +101,7 @@ exports[`<Highlight /> should render headings and button 1`] = `
   }
 }
 
-<div
+<section
   class="c0"
 >
   <div
@@ -119,12 +119,12 @@ exports[`<Highlight /> should render headings and button 1`] = `
     </h3>
     <a
       class="c5"
-      href="/button"
+      href="/rdr2"
     >
       <span>
-        buy now
+        Buy now
       </span>
     </a>
   </div>
-</div>
-`;
+</section>
+`

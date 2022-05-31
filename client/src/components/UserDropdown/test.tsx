@@ -1,25 +1,27 @@
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { renderWithTheme } from 'utils/tests/helpers'
 
-import UserDropdown from '.';
+import UserDropdown from '.'
 
 describe('<UserDropdown />', () => {
   it('should render the username', () => {
-    renderWithTheme(<UserDropdown username="André Junior" />);
+    renderWithTheme(<UserDropdown username="Willian" />)
 
-    expect(screen.getByText(/andré junior/i)).toBeInTheDocument();
-  });
+    expect(screen.getByText(/willian/i)).toBeInTheDocument()
+  })
 
-  it('should render the menu', async () => {
-    renderWithTheme(<UserDropdown username="Junior" />);
+  it('should render the menu', () => {
+    renderWithTheme(<UserDropdown username="Willian" />)
 
-    await userEvent.click(screen.getByText(/junior/i));
+    // open menu
+    userEvent.click(screen.getByText(/willian/i))
 
     expect(
-      screen.getByRole('link', { name: /my profile/i }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /wishlist/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /sign out/i })).toBeInTheDocument();
-  });
-});
+      screen.getByRole('link', { name: /my profile/i })
+    ).toBeInTheDocument()
+
+    expect(screen.getByRole('link', { name: /wishlist/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /sign out/i })).toBeInTheDocument()
+  })
+})

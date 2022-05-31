@@ -1,33 +1,33 @@
-import { Wrapper } from './styles';
+import * as S from './styles'
 
-export type LineColors = 'primary' | 'secondary';
+export type LineColors = 'primary' | 'secondary'
 
 export type HeadingProps = {
-  children: React.ReactNode;
-  color?: 'white' | 'black';
-  lineLeft?: boolean;
-  lineBottom?: boolean;
-  lineColor?: LineColors;
-  size?: 'small' | 'medium' | 'huge';
-};
+  children: React.ReactNode
+  color?: 'white' | 'black'
+  lineLeft?: boolean
+  lineBottom?: boolean
+  lineColor?: LineColors
+  size?: 'small' | 'medium' | 'huge'
+}
 
-export default function Heading({
+const Heading = ({
   children,
   color = 'white',
   lineLeft = false,
   lineBottom = false,
   lineColor = 'primary',
-  size = 'medium',
-}: HeadingProps) {
-  return (
-    <Wrapper
-      color={color}
-      lineLeft={lineLeft}
-      lineBottom={lineBottom}
-      lineColor={lineColor}
-      size={size}
-    >
-      {children}
-    </Wrapper>
-  );
-}
+  size = 'medium'
+}: HeadingProps) => (
+  <S.Wrapper
+    color={color}
+    lineLeft={lineLeft}
+    lineBottom={lineBottom}
+    lineColor={lineColor}
+    size={size}
+  >
+    {children}
+  </S.Wrapper>
+)
+
+export default Heading

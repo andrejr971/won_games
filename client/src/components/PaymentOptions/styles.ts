@@ -1,19 +1,19 @@
-import { tint } from 'polished';
-import styled, { css, DefaultTheme } from 'styled-components';
+import { tint } from 'polished'
+import styled, { css, DefaultTheme } from 'styled-components'
 
-import * as ButtonStyles from 'components/Button/styles';
+import * as ButtonStyles from 'components/Button/styles'
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.div`
   ${({ theme }) => css`
     background: ${theme.colors.white};
   `}
-`;
+`
 
 export const Body = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
   `}
-`;
+`
 
 export const Footer = styled.div`
   ${({ theme }) => css`
@@ -30,12 +30,12 @@ export const Footer = styled.div`
       outline: 0;
     }
   `}
-`;
+`
 
 export const CardsList = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const CardInfo = styled.span`
   ${({ theme }) => css`
@@ -46,7 +46,7 @@ export const CardInfo = styled.span`
       margin-right: ${theme.spacings.xxsmall};
     }
   `}
-`;
+`
 
 const ItemStyles = (theme: DefaultTheme) => css`
   background: ${theme.colors.lightGray};
@@ -57,7 +57,7 @@ const ItemStyles = (theme: DefaultTheme) => css`
   cursor: pointer;
   display: flex;
   align-items: center;
-`;
+`
 
 export const CardItem = styled.label`
   ${({ theme }) => css`
@@ -68,7 +68,7 @@ export const CardItem = styled.label`
       margin-bottom: ${theme.spacings.xxsmall};
     }
   `}
-`;
+`
 
 export const AddCard = styled.div`
   ${({ theme }) => css`
@@ -80,4 +80,4 @@ export const AddCard = styled.div`
       width: 2.4rem;
     }
   `}
-`;
+`

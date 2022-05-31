@@ -1,13 +1,13 @@
 import {
   createGlobalStyle,
   css,
-  GlobalStyleComponent,
   DefaultTheme,
-} from 'styled-components';
+  GlobalStyleComponent
+} from 'styled-components'
 
 type GlobalStylesProps = {
-  removeBg?: boolean;
-};
+  removeBg?: boolean
+}
 
 const GlobalStyles: GlobalStyleComponent<
   GlobalStylesProps,
@@ -47,7 +47,8 @@ const GlobalStyles: GlobalStyleComponent<
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    &::after,&::before {
+    &::before,
+    &::after {
       box-sizing: inherit;
     }
   }
@@ -68,6 +69,6 @@ const GlobalStyles: GlobalStyleComponent<
     }
   `}
 
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

@@ -33,7 +33,7 @@ exports[`<Footer /> should render 4 column topics 1`] = `
 
 .c2 {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: minmax(auto,50%) 1fr;
   gap: 3.2rem;
   margin-top: 3.2rem;
 }
@@ -46,6 +46,11 @@ exports[`<Footer /> should render 4 column topics 1`] = `
   text-decoration: none;
   margin-bottom: 0.8rem;
   font-size: 1.4rem;
+}
+
+.c3 a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .c3 a:hover {
@@ -75,7 +80,7 @@ exports[`<Footer /> should render 4 column topics 1`] = `
     color="black"
   >
     <svg
-      aria-label="Logo Won Games"
+      aria-label="Won Games"
       fill="none"
       role="img"
       viewBox="0 0 158 48"
@@ -169,9 +174,9 @@ exports[`<Footer /> should render 4 column topics 1`] = `
         Contact Us
       </h2>
       <a
-        href="mailto:sac@wongamecom"
+        href="mailto:sac@wongames.com"
       >
-        sac@wongamecom
+        sac@wongames.com
       </a>
     </div>
     <div
@@ -269,9 +274,7 @@ exports[`<Footer /> should render 4 column topics 1`] = `
   <div
     class="c6"
   >
-    Won Games 
-    2022
-     © All rights reserved.
+    Won Games 2020 © All rights reserved.
   </div>
 </footer>
-`;
+`

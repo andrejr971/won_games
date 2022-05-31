@@ -1,37 +1,35 @@
-import Button from 'components/Button';
-import { Content, SubTitle, Title, Wrapper, FloatImage } from './styles';
+import Button from 'components/Button'
+import * as S from './styles'
 
 export type HighlightProps = {
-  title: string;
-  subtitle: string;
-  backgroundImage: string;
-  buttonLabel: string;
-  buttonLink: string;
-  floatImage?: string;
-  alignment?: 'right' | 'left';
-};
+  title: string
+  subtitle: string
+  backgroundImage: string
+  floatImage?: string
+  buttonLabel: string
+  buttonLink: string
+  alignment?: 'right' | 'left'
+}
 
-export default function Highlight({
+const Highlight = ({
   title,
   subtitle,
-  buttonLabel,
-  buttonLink,
   backgroundImage,
   floatImage,
-  alignment = 'right',
-}: HighlightProps) {
-  return (
-    <Wrapper backgroundImage={backgroundImage} alignment={alignment}>
-      <Content>
-        <Title>{title}</Title>
-        <SubTitle>{subtitle}</SubTitle>
+  buttonLabel,
+  buttonLink,
+  alignment = 'right'
+}: HighlightProps) => (
+  <S.Wrapper alignment={alignment} backgroundImage={backgroundImage}>
+    {!!floatImage && <S.FloatImage src={floatImage} alt={title} />}
+    <S.Content>
+      <S.Title>{title}</S.Title>
+      <S.SubTitle>{subtitle}</S.SubTitle>
+      <Button as="a" href={buttonLink}>
+        {buttonLabel}
+      </Button>
+    </S.Content>
+  </S.Wrapper>
+)
 
-        <Button as="a" href={buttonLink}>
-          {buttonLabel}
-        </Button>
-      </Content>
-
-      {!!floatImage && <FloatImage src={floatImage} alt={title} />}
-    </Wrapper>
-  );
-}
+export default Highlight

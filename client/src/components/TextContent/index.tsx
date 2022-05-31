@@ -1,21 +1,22 @@
-import Heading from 'components/Heading';
-import { Wrapper } from './styles';
+import Heading from 'components/Heading'
+
+import * as S from './styles'
 
 export type TextContentProps = {
-  title?: string;
-  content: string;
-};
-
-export default function TextContent({ title, content }: TextContentProps) {
-  return (
-    <Wrapper>
-      {!!title && (
-        <Heading lineLeft lineColor="secondary">
-          {title}
-        </Heading>
-      )}
-
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </Wrapper>
-  );
+  title?: string
+  content: string
 }
+
+const TextContent = ({ title, content }: TextContentProps) => (
+  <S.Wrapper>
+    {!!title && (
+      <Heading lineLeft lineColor="secondary">
+        {title}
+      </Heading>
+    )}
+
+    <div dangerouslySetInnerHTML={{ __html: content }} />
+  </S.Wrapper>
+)
+
+export default TextContent

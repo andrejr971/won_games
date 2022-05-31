@@ -1,9 +1,5 @@
-import styled, { css } from 'styled-components';
-import media from 'styled-media-query';
-
-type MenuFullProps = {
-  isOpen: boolean;
-};
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.menu`
   ${({ theme }) => css`
@@ -11,10 +7,9 @@ export const Wrapper = styled.menu`
     align-items: center;
     padding: ${theme.spacings.small} 0;
     position: relative;
-
     z-index: ${theme.layers.menu};
   `}
-`;
+`
 
 export const LogoWrapper = styled.div`
   ${media.lessThan('medium')`
@@ -22,7 +17,7 @@ export const LogoWrapper = styled.div`
     left: 50%;
     transform: translateX(-50%);
   `}
-`;
+`
 
 export const IconWrapper = styled.div`
   ${({ theme }) => css`
@@ -31,7 +26,7 @@ export const IconWrapper = styled.div`
     width: 2.4rem;
     height: 2.4rem;
   `}
-`;
+`
 
 export const MenuGroup = styled.div`
   ${({ theme }) => css`
@@ -44,7 +39,7 @@ export const MenuGroup = styled.div`
       margin-left: ${theme.spacings.xsmall};
     }
   `}
-`;
+`
 
 export const MenuNav = styled.div`
   ${({ theme }) => css`
@@ -52,16 +47,16 @@ export const MenuNav = styled.div`
 			margin-left: ${theme.spacings.small};
 		`}
   `}
-`;
+`
 
 export const MenuLink = styled.a`
   ${({ theme }) => css`
     position: relative;
+    color: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
     text-align: center;
-    color: ${theme.colors.white};
 
     &:hover {
       &::after {
@@ -85,7 +80,11 @@ export const MenuLink = styled.a`
       }
     }
   `}
-`;
+`
+
+type MenuFullProps = {
+  isOpen: boolean
+}
 
 export const MenuFull = styled.nav<MenuFullProps>`
   ${({ theme, isOpen }) => css`
@@ -128,7 +127,6 @@ export const MenuFull = styled.nav<MenuFullProps>`
       font-weight: ${theme.font.bold};
       font-size: ${theme.font.sizes.xlarge};
       margin-bottom: ${theme.spacings.small};
-
       transform: ${isOpen ? 'translateY(0)' : 'translateY(3rem)'};
       transition: transform 0.3s ease-in-out;
     }
@@ -136,9 +134,9 @@ export const MenuFull = styled.nav<MenuFullProps>`
     ${RegisterBox} {
       transform: ${isOpen ? 'translateY(0)' : 'translateY(3rem)'};
       transition: transform 0.3s ease-in-out;
-    }}
+    }
   `}
-`;
+`
 
 export const RegisterBox = styled.div`
   ${({ theme }) => css`
@@ -153,7 +151,7 @@ export const RegisterBox = styled.div`
       font-size: ${theme.font.sizes.xsmall};
     }
   `}
-`;
+`
 
 export const CreateAccount = styled.a`
   ${({ theme }) => css`
@@ -161,4 +159,4 @@ export const CreateAccount = styled.a`
     color: ${theme.colors.primary};
     border-bottom: 0.2rem solid ${theme.colors.primary};
   `}
-`;
+`

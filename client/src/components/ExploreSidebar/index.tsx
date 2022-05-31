@@ -1,89 +1,82 @@
-import { useState } from 'react';
-import { Close } from '@styled-icons/material-outlined/Close';
-import { FilterList } from '@styled-icons/material-outlined/FilterList';
+import { useState } from 'react'
+import { Close } from '@styled-icons/material-outlined/Close'
+import { FilterList } from '@styled-icons/material-outlined/FilterList'
 
-import Button from 'components/Button';
-import Checkbox from 'components/Checkbox';
-import Heading from 'components/Heading';
-import Radio from 'components/Radio';
+import Heading from 'components/Heading'
+import Button from 'components/Button'
+import Checkbox from 'components/Checkbox'
+import Radio from 'components/Radio'
 
-import {
-  Content,
-  Footer,
-  IconWrapper,
-  Items,
-  Overlay,
-  Wrapper,
-} from './styles';
+import * as S from './styles'
 
 export type ItemProps = {
-  title: string;
-  name: string;
-  type: string;
-  fields: Field[];
-};
+  title: string
+  name: string
+  type: string
+  fields: Field[]
+}
 
 type Field = {
-  label: string;
-  name: string;
-};
+  label: string
+  name: string
+}
 
 type Values = {
-  [field: string]: boolean | string;
-};
+  [field: string]: boolean | string
+}
 
 export type ExploreSidebarProps = {
-  items: ItemProps[];
-  initialValues?: Values;
-  onFilter: (values: Values) => void;
-};
+  items: ItemProps[]
+  initialValues?: Values
+  onFilter: (values: Values) => void
+}
 
-export default function ExploreSidebar({
+const ExploreSidebar = ({
   items,
   onFilter,
-  initialValues = {},
-}: ExploreSidebarProps) {
-  const [values, setValues] = useState(initialValues);
-  const [isOpen, setIsOpen] = useState(false);
+  initialValues = {}
+}: ExploreSidebarProps) => {
+  const [values, setValues] = useState(initialValues)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleChange = (name: string, value: string | boolean) => {
-    setValues(s => ({ ...s, [name]: value }));
-  };
+    setValues((s) => ({ ...s, [name]: value }))
+  }
 
   const handleFilter = () => {
-    onFilter(values);
-    setIsOpen(false);
-  };
+    onFilter(values)
+    setIsOpen(false)
+  }
 
   return (
-    <Wrapper isOpen={isOpen}>
-      <Overlay aria-hidden={isOpen} />
-      <IconWrapper>
+    <S.Wrapper isOpen={isOpen}>
+      <S.Overlay aria-hidden={isOpen} />
+      <S.IconWrapper>
         <FilterList aria-label="open filters" onClick={() => setIsOpen(true)} />
         <Close aria-label="close filters" onClick={() => setIsOpen(false)} />
-      </IconWrapper>
+      </S.IconWrapper>
 
-      <Content>
-        {items.map(item => (
-          <Items key={item.title}>
+      <S.Content>
+        {items.map((item) => (
+          <S.Items key={item.title}>
             <Heading lineBottom lineColor="secondary" size="small">
               {item.title}
             </Heading>
 
             {item.type === 'checkbox' &&
-              item.fields.map(field => (
+              item.fields.map((field) => (
                 <Checkbox
                   key={field.name}
                   name={field.name}
                   label={field.label}
                   labelFor={field.name}
                   isChecked={!!values[field.name]}
-                  onCheck={v => handleChange(field.name, v)}
+                  onCheck={(v) => handleChange(field.name, v)}
                 />
               ))}
 
             {item.type === 'radio' &&
-              item.fields.map(field => (
+              item.fields.map((field) => (
                 <Radio
                   key={field.name}
                   id={field.name}
@@ -95,15 +88,17 @@ export default function ExploreSidebar({
                   onChange={() => handleChange(item.name, field.name)}
                 />
               ))}
-          </Items>
+          </S.Items>
         ))}
-      </Content>
+      </S.Content>
 
-      <Footer>
+      <S.Footer>
         <Button fullWidth size="medium" onClick={handleFilter}>
           Filter
         </Button>
-      </Footer>
-    </Wrapper>
-  );
+      </S.Footer>
+    </S.Wrapper>
+  )
 }
+
+export default ExploreSidebar

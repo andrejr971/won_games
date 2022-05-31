@@ -1,10 +1,10 @@
-import { renderWithTheme } from 'utils/tests/helpers';
+import { renderWithTheme } from 'utils/tests/helpers'
 
-import { Divider } from '.';
+import { Divider } from '.'
 
 describe('<Divider />', () => {
   it('should render correctly', () => {
-    const { container } = renderWithTheme(<Divider />);
+    const { container } = renderWithTheme(<Divider />)
 
     expect(container.firstChild).toMatchInlineSnapshot(`
       .c0 {
@@ -23,6 +23,6 @@ describe('<Divider />', () => {
       <hr
         class="c0"
       />
-    `);
-  });
-});
+    `)
+  })
+})

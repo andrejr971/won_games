@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const QUERY_GAMES = gql`
   query QueryGames($limit: Int!) {
@@ -14,4 +14,4 @@ export const QUERY_GAMES = gql`
       price
     }
   }
-`;
+`
