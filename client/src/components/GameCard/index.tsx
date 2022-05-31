@@ -6,6 +6,7 @@ import {
 
 import Button from 'components/Button';
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon';
+import Link from 'next/link';
 
 import {
   BuyBox,
@@ -20,6 +21,7 @@ import {
 } from './styles';
 
 export type GameCardProps = {
+  slug: string;
   title: string;
   developer: string;
   img: string;
@@ -34,6 +36,7 @@ export type GameCardProps = {
 
 export default function GameCard({
   title,
+  slug,
   developer,
   img,
   price,
@@ -52,14 +55,18 @@ export default function GameCard({
         </Ribbon>
       )}
 
-      <ImageBox>
-        <img src={img} alt={title} />
-      </ImageBox>
+      <Link href={`/games/${slug}`} passHref>
+        <ImageBox>
+          <img src={img} alt={title} />
+        </ImageBox>
+      </Link>
       <Content>
-        <Info>
-          <Title>{title}</Title>
-          <Developer>{developer}</Developer>
-        </Info>
+        <Link href={`/games/${slug}`} passHref>
+          <Info>
+            <Title>{title}</Title>
+            <Developer>{developer}</Developer>
+          </Info>
+        </Link>
         <FavButton role="button" onClick={onFav}>
           {favorite ? (
             <Favorite aria-label="Remove from wishlist" />

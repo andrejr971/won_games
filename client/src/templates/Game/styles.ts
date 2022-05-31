@@ -3,10 +3,6 @@ import media from 'styled-media-query';
 
 import { Container } from 'components/Container';
 
-type CoverProps = {
-  src: string;
-};
-
 export const Main = styled.main`
   margin-top: 20rem;
 
@@ -14,6 +10,10 @@ export const Main = styled.main`
     margin-top: 45rem;
   `}
 `;
+
+type CoverProps = {
+  src: string;
+};
 
 export const Cover = styled.div<CoverProps>`
   ${({ src }) => css`

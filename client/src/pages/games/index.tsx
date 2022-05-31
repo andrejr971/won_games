@@ -24,6 +24,7 @@ export const getStaticProps: GetStaticProps<GamesTemplateProps> = async () => {
   const games = data.games.map(game => ({
     title: game.name,
     developer: game.developers[0].name,
+    slug: game.slug,
     price:
       game.price > 0
         ? new Intl.NumberFormat('en', {
