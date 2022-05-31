@@ -1,7 +1,7 @@
-import styled, { css, DefaultTheme } from 'styled-components'
-import { darken } from 'polished'
+import styled, { css, DefaultTheme } from 'styled-components';
+import { darken } from 'polished';
 
-import { RibbonProps, RibbonColors } from '.'
+import { RibbonProps, RibbonColors } from '.';
 
 const wrapperModifiers = {
   color: (theme: DefaultTheme, color: RibbonColors) => css`
@@ -37,8 +37,8 @@ const wrapperModifiers = {
       border-top-width: 0.7rem;
       border-right-width: 1.5rem;
     }
-  `
-}
+  `,
+};
 
 export const Wrapper = styled.div<RibbonProps>`
   ${({ theme, color, size }) => css`
@@ -63,4 +63,4 @@ export const Wrapper = styled.div<RibbonProps>`
     ${!!color && wrapperModifiers.color(theme, color)};
     ${!!size && wrapperModifiers[size](theme)};
   `}
-`
+`;

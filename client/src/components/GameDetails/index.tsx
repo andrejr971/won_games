@@ -1,22 +1,30 @@
-import { Apple, Windows, Linux } from '@styled-icons/fa-brands'
+import { Apple, Windows, Linux } from '@styled-icons/fa-brands';
 
-import Heading from 'components/Heading'
-import MediaMatch from 'components/MediaMatch'
+import Heading from 'components/Heading';
+import MediaMatch from 'components/MediaMatch';
 
-import * as S from './styles'
+import {
+  Wrapper,
+  Block,
+  Content,
+  Description,
+  Icon,
+  IconsWrapper,
+  Label,
+} from './styles';
 
-type Platform = 'windows' | 'linux' | 'mac'
+type Platform = 'windows' | 'linux' | 'mac';
 
-type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
+type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18';
 
 export type GameDetailsProps = {
-  developer: string
-  publisher: string
-  platforms: Platform[]
-  releaseDate: string
-  rating: Rating
-  genres: string[]
-}
+  developer: string;
+  publisher: string;
+  platforms: Platform[];
+  releaseDate: string;
+  rating: Rating;
+  genres: string[];
+};
 
 const GameDetails = ({
   developer,
@@ -24,67 +32,67 @@ const GameDetails = ({
   releaseDate,
   platforms,
   rating,
-  genres
+  genres,
 }: GameDetailsProps) => {
   const platformIcons = {
     linux: <Linux title="Linux" size={18} />,
     mac: <Apple title="Mac" size={18} />,
-    windows: <Windows title="Windows" size={18} />
-  }
+    windows: <Windows title="Windows" size={18} />,
+  };
 
   return (
-    <S.Wrapper>
+    <Wrapper>
       <MediaMatch greaterThan="small">
         <Heading lineLeft lineColor="secondary">
           Game Details
         </Heading>
       </MediaMatch>
 
-      <S.Content>
-        <S.Block>
-          <S.Label>Developer</S.Label>
-          <S.Description>{developer}</S.Description>
-        </S.Block>
+      <Content>
+        <Block>
+          <Label>Developer</Label>
+          <Description>{developer}</Description>
+        </Block>
 
-        <S.Block>
-          <S.Label>Release Date</S.Label>
-          <S.Description>
+        <Block>
+          <Label>Release Date</Label>
+          <Description>
             {new Intl.DateTimeFormat('en-US', {
               day: 'numeric',
               month: 'short',
-              year: 'numeric'
+              year: 'numeric',
             }).format(new Date(releaseDate))}
-          </S.Description>
-        </S.Block>
+          </Description>
+        </Block>
 
-        <S.Block>
-          <S.Label>Platforms</S.Label>
-          <S.IconsWrapper>
+        <Block>
+          <Label>Platforms</Label>
+          <IconsWrapper>
             {platforms.map((icon: Platform) => (
-              <S.Icon key={icon}>{platformIcons[icon]}</S.Icon>
+              <Icon key={icon}>{platformIcons[icon]}</Icon>
             ))}
-          </S.IconsWrapper>
-        </S.Block>
+          </IconsWrapper>
+        </Block>
 
-        <S.Block>
-          <S.Label>Publisher</S.Label>
-          <S.Description>{publisher}</S.Description>
-        </S.Block>
+        <Block>
+          <Label>Publisher</Label>
+          <Description>{publisher}</Description>
+        </Block>
 
-        <S.Block>
-          <S.Label>Rating</S.Label>
-          <S.Description>
+        <Block>
+          <Label>Rating</Label>
+          <Description>
             {rating === 'BR0' ? 'FREE' : `${rating.replace('BR', '')}+`}
-          </S.Description>
-        </S.Block>
+          </Description>
+        </Block>
 
-        <S.Block>
-          <S.Label>Genres</S.Label>
-          <S.Description>{genres.join(' / ')}</S.Description>
-        </S.Block>
-      </S.Content>
-    </S.Wrapper>
-  )
-}
+        <Block>
+          <Label>Genres</Label>
+          <Description>{genres.join(' / ')}</Description>
+        </Block>
+      </Content>
+    </Wrapper>
+  );
+};
 
-export default GameDetails
+export default GameDetails;

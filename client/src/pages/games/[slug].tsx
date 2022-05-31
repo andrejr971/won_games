@@ -1,19 +1,19 @@
-import Game, { GameTemplateProps } from 'templates/Game'
+import Game, { GameTemplateProps } from 'templates/Game';
 
-import galleryMock from 'components/Gallery/mock'
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
+import galleryMock from 'components/Gallery/mock';
+import gamesMock from 'components/GameCardSlider/mock';
+import highlightMock from 'components/Highlight/mock';
 
 export default function Index(props: GameTemplateProps) {
-  return <Game {...props} />
+  return <Game {...props} />;
 }
 
 // gerar em build time (/game/bla, /bame/foo ...)
 export async function getStaticPaths() {
   return {
     paths: [{ params: { slug: 'cyberpunk-2077' } }],
-    fallback: false
-  }
+    fallback: false,
+  };
 }
 
 export async function getStaticProps() {
@@ -33,7 +33,7 @@ export async function getStaticProps() {
     CD PROJEKT®, Cyberpunk®, Cyberpunk 2077® are registered trademarks of CD PROJEKT S.A. © 2019
     CD PROJEKT S.A. All rights reserved. All other copyrights and trademarks are the property of their
     respective owners.
-  </p>`
+  </p>`;
 
   return {
     props: {
@@ -43,7 +43,7 @@ export async function getStaticProps() {
         title: 'Cyberpunk 2077',
         price: '59.00',
         description:
-          'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality'
+          'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality',
       },
       gallery: galleryMock,
       description: descriptionHTML,
@@ -53,11 +53,11 @@ export async function getStaticProps() {
         platforms: ['windows'],
         publisher: 'CD PROJEKT RED',
         rating: 'BR18',
-        genres: ['Action', 'Role-playing']
+        genres: ['Action', 'Role-playing'],
       },
       upcomingGames: gamesMock,
       upcomingHighlight: highlightMock,
-      recommendedGames: gamesMock
-    }
-  }
+      recommendedGames: gamesMock,
+    },
+  };
 }

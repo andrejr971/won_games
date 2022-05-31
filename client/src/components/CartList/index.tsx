@@ -1,34 +1,35 @@
-import Link from 'next/link'
-import Button from 'components/Button'
-import GameItem, { GameItemProps } from 'components/GameItem'
+import Link from 'next/link';
+import Button from 'components/Button';
+import GameItem, { GameItemProps } from 'components/GameItem';
 
-import * as S from './styles'
-import Empty from 'components/Empty'
+import { Wrapper, Footer, Total } from './styles';
+
+import Empty from 'components/Empty';
 
 export type CartListProps = {
-  items?: GameItemProps[]
-  total?: string
-  hasButton?: boolean
-}
+  items?: GameItemProps[];
+  total?: string;
+  hasButton?: boolean;
+};
 
 const CartList = ({ items = [], total, hasButton = false }: CartListProps) => (
-  <S.Wrapper isEmpty={!items.length}>
+  <Wrapper isEmpty={!items.length}>
     {items.length ? (
       <>
-        {items.map((item) => (
+        {items.map(item => (
           <GameItem key={item.title} {...item} />
         ))}
 
-        <S.Footer>
+        <Footer>
           {!hasButton && <span>Total:</span>}
-          <S.Total>{total}</S.Total>
+          <Total>{total}</Total>
 
           {hasButton && (
             <Link href="/cart">
               <Button as="a">Buy it now</Button>
             </Link>
           )}
-        </S.Footer>
+        </Footer>
       </>
     ) : (
       <Empty
@@ -37,7 +38,7 @@ const CartList = ({ items = [], total, hasButton = false }: CartListProps) => (
         hasLink
       />
     )}
-  </S.Wrapper>
-)
+  </Wrapper>
+);
 
-export default CartList
+export default CartList;

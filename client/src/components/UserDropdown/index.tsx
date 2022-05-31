@@ -1,51 +1,51 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import {
   AccountCircle,
   FavoriteBorder,
-  ExitToApp
-} from '@styled-icons/material-outlined'
-import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown'
+  ExitToApp,
+} from '@styled-icons/material-outlined';
+import { ChevronDown } from '@styled-icons/boxicons-regular/ChevronDown';
 
-import Dropdown from 'components/Dropdown'
+import Dropdown from 'components/Dropdown';
 
-import * as S from './styles'
+import { Username, Link as NavLink, Nav } from './styles';
 
 export type UserDropdownProps = {
-  username: string
-}
+  username: string;
+};
 
 const UserDropdown = ({ username }: UserDropdownProps) => (
   <Dropdown
     title={
       <>
         <AccountCircle size={24} />
-        <S.Username>{username}</S.Username>
+        <Username>{username}</Username>
         <ChevronDown size={24} />
       </>
     }
   >
-    <S.Nav>
+    <Nav>
       <Link href="/profile/me" passHref>
-        <S.Link>
+        <NavLink>
           <AccountCircle />
           <span>My profile</span>
-        </S.Link>
+        </NavLink>
       </Link>
       <Link href="/wishlist" passHref>
-        <S.Link title="Wishlist">
+        <NavLink title="Wishlist">
           <FavoriteBorder />
           <span>Wishlist</span>
-        </S.Link>
+        </NavLink>
       </Link>
 
       <Link href="/logout" passHref>
-        <S.Link title="Sign out">
+        <NavLink title="Sign out">
           <ExitToApp />
           <span>Sign out</span>
-        </S.Link>
+        </NavLink>
       </Link>
-    </S.Nav>
+    </Nav>
   </Dropdown>
-)
+);
 
-export default UserDropdown
+export default UserDropdown;

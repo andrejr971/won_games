@@ -1,16 +1,16 @@
-import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart'
+import { ShoppingCart } from '@styled-icons/material-outlined/ShoppingCart';
 
-import * as S from './styles'
+import { Wrapper, Badge } from './styles';
 
 export type CartIconProps = {
-  quantity?: number
-}
+  quantity?: number;
+};
 
 const CartIcon = ({ quantity = 0 }: CartIconProps) => (
-  <S.Wrapper>
-    {quantity > 0 && <S.Badge aria-label="Cart Items">{quantity}</S.Badge>}
+  <Wrapper>
+    {quantity > 0 && <Badge aria-label="Cart Items">{quantity}</Badge>}
     <ShoppingCart aria-label="Shopping Cart" />
-  </S.Wrapper>
-)
+  </Wrapper>
+);
 
-export default CartIcon
+export default CartIcon;

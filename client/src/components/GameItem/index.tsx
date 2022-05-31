@@ -1,62 +1,72 @@
-import { Download } from '@styled-icons/boxicons-solid/Download'
+import { Download } from '@styled-icons/boxicons-solid/Download';
 
-import * as S from './styles'
+import {
+  Wrapper,
+  CardInfo,
+  Content,
+  DownloadLink,
+  GameContent,
+  ImageBox,
+  PaymentContent,
+  Price,
+  Title,
+} from './styles';
 
 export type PaymentInfoProps = {
-  number: string
-  flag: string
-  img: string
-  purchaseDate: string
-}
+  number: string;
+  flag: string;
+  img: string;
+  purchaseDate: string;
+};
 
 export type GameItemProps = {
-  img: string
-  title: string
-  price: string
-  downloadLink?: string
-  paymentInfo?: PaymentInfoProps
-}
+  img: string;
+  title: string;
+  price: string;
+  downloadLink?: string;
+  paymentInfo?: PaymentInfoProps;
+};
 
 const GameItem = ({
   img,
   title,
   price,
   downloadLink,
-  paymentInfo
+  paymentInfo,
 }: GameItemProps) => (
-  <S.Wrapper>
-    <S.GameContent>
-      <S.ImageBox>
+  <Wrapper>
+    <GameContent>
+      <ImageBox>
         <img src={img} alt={title} />
-      </S.ImageBox>
+      </ImageBox>
 
-      <S.Content>
-        <S.Title>
+      <Content>
+        <Title>
           {title}
           {!!downloadLink && (
-            <S.DownloadLink
+            <DownloadLink
               href={downloadLink}
               target="_blank"
               aria-label={`Get ${title} here`}
             >
               <Download size={22} />
-            </S.DownloadLink>
+            </DownloadLink>
           )}
-        </S.Title>
-        <S.Price>{price}</S.Price>
-      </S.Content>
-    </S.GameContent>
+        </Title>
+        <Price>{price}</Price>
+      </Content>
+    </GameContent>
 
     {!!paymentInfo && (
-      <S.PaymentContent>
+      <PaymentContent>
         <p>{paymentInfo.purchaseDate}</p>
-        <S.CardInfo>
+        <CardInfo>
           <span>{paymentInfo.number}</span>
           <img src={paymentInfo.img} alt={paymentInfo.flag} />
-        </S.CardInfo>
-      </S.PaymentContent>
+        </CardInfo>
+      </PaymentContent>
     )}
-  </S.Wrapper>
-)
+  </Wrapper>
+);
 
-export default GameItem
+export default GameItem;

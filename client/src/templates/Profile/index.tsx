@@ -1,18 +1,18 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
-import { Container } from 'components/Container'
-import Heading from 'components/Heading'
-import ProfileMenu from 'components/ProfileMenu'
-import Base from 'templates/Base'
+import { Container } from 'components/Container';
+import Heading from 'components/Heading';
+import ProfileMenu from 'components/ProfileMenu';
+import Base from 'templates/Base';
 
-import * as S from './styles'
+import { Content, Main } from './styles';
 
 export type ProfileTemplateProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const Profile = ({ children }: ProfileTemplateProps) => {
-  const { asPath } = useRouter()
+  const { asPath } = useRouter();
 
   return (
     <Base>
@@ -21,13 +21,13 @@ const Profile = ({ children }: ProfileTemplateProps) => {
           My profile
         </Heading>
 
-        <S.Main>
+        <Main>
           <ProfileMenu activeLink={asPath} />
-          <S.Content>{children}</S.Content>
-        </S.Main>
+          <Content>{children}</Content>
+        </Main>
       </Container>
     </Base>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

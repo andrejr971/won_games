@@ -1,26 +1,33 @@
-import Base from 'templates/Base'
+import Base from 'templates/Base';
 
-import GameInfo, { GameInfoProps } from 'components/GameInfo'
-import Gallery, { GalleryImageProps } from 'components/Gallery'
-import GameDetails, { GameDetailsProps } from 'components/GameDetails'
-import TextContent from 'components/TextContent'
-import Showcase from 'components/Showcase'
-import { Divider } from 'components/Divider'
-import { GameCardProps } from 'components/GameCard'
-import { HighlightProps } from 'components/Highlight'
+import GameInfo, { GameInfoProps } from 'components/GameInfo';
+import Gallery, { GalleryImageProps } from 'components/Gallery';
+import GameDetails, { GameDetailsProps } from 'components/GameDetails';
+import TextContent from 'components/TextContent';
+import Showcase from 'components/Showcase';
+import { Divider } from 'components/Divider';
+import { GameCardProps } from 'components/GameCard';
+import { HighlightProps } from 'components/Highlight';
 
-import * as S from './styles'
+import {
+  Cover,
+  Main,
+  SectionDescription,
+  SectionGallery,
+  SectionGameDetails,
+  SectionGameInfo,
+} from './styles';
 
 export type GameTemplateProps = {
-  cover: string
-  gameInfo: GameInfoProps
-  gallery?: GalleryImageProps[]
-  description: string
-  details: GameDetailsProps
-  upcomingGames: GameCardProps[]
-  upcomingHighlight: HighlightProps
-  recommendedGames: GameCardProps[]
-}
+  cover: string;
+  gameInfo: GameInfoProps;
+  gallery?: GalleryImageProps[];
+  description: string;
+  details: GameDetailsProps;
+  upcomingGames: GameCardProps[];
+  upcomingHighlight: HighlightProps;
+  recommendedGames: GameCardProps[];
+};
 
 const Game = ({
   cover,
@@ -30,28 +37,28 @@ const Game = ({
   details,
   upcomingGames,
   upcomingHighlight,
-  recommendedGames
+  recommendedGames,
 }: GameTemplateProps) => (
   <Base>
-    <S.Cover src={cover} role="image" aria-label="cover" />
+    <Cover src={cover} role="image" aria-label="cover" />
 
-    <S.Main>
-      <S.SectionGameInfo>
+    <Main>
+      <SectionGameInfo>
         <GameInfo {...gameInfo} />
-      </S.SectionGameInfo>
+      </SectionGameInfo>
 
-      <S.SectionGallery>
+      <SectionGallery>
         {!!gallery && <Gallery items={gallery} />}
-      </S.SectionGallery>
+      </SectionGallery>
 
-      <S.SectionDescription>
+      <SectionDescription>
         <TextContent title="Description" content={description} />
-      </S.SectionDescription>
+      </SectionDescription>
 
-      <S.SectionGameDetails>
+      <SectionGameDetails>
         <GameDetails {...details} />
         <Divider />
-      </S.SectionGameDetails>
+      </SectionGameDetails>
 
       <Showcase
         title="Upcoming"
@@ -60,8 +67,8 @@ const Game = ({
       />
 
       <Showcase title="You may like these games" games={recommendedGames} />
-    </S.Main>
+    </Main>
   </Base>
-)
+);
 
-export default Game
+export default Game;

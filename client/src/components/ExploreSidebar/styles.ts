@@ -1,10 +1,10 @@
-import styled, { css, DefaultTheme } from 'styled-components'
-import media from 'styled-media-query'
-import { rgba } from 'polished'
+import styled, { css, DefaultTheme } from 'styled-components';
+import media from 'styled-media-query';
+import { rgba } from 'polished';
 
-import * as CheckboxStyles from 'components/Checkbox/styles'
-import * as RadioStyles from 'components/Radio/styles'
-import * as HeadingStyles from 'components/Heading/styles'
+import * as CheckboxStyles from 'components/Checkbox/styles';
+import * as RadioStyles from 'components/Radio/styles';
+import * as HeadingStyles from 'components/Heading/styles';
 
 export const IconWrapper = styled.div`
   cursor: pointer;
@@ -14,7 +14,7 @@ export const IconWrapper = styled.div`
   ${media.greaterThan('medium')`
     display: none;
   `}
-`
+`;
 
 export const Content = styled.div`
   ${({ theme }) => css`
@@ -32,7 +32,7 @@ export const Content = styled.div`
       margin-bottom: 0;
     `}
   `}
-`
+`;
 
 export const Overlay = styled.div`
   ${({ theme }) => css`
@@ -40,7 +40,7 @@ export const Overlay = styled.div`
     opacity: 0;
     position: absolute;
   `}
-`
+`;
 
 export const Items = styled.div`
   ${({ theme }) => css`
@@ -54,14 +54,14 @@ export const Items = styled.div`
       padding-top: ${theme.spacings.xsmall};
     }
   `}
-`
+`;
 
 export const Footer = styled.div`
   ${({ theme }) => css`
     box-shadow: 0 -0.2rem 0.4rem ${rgba(theme.colors.black, 0.2)};
     padding: ${theme.spacings.small};
   `}
-`
+`;
 
 const wrapperModifiers = {
   open: (theme: DefaultTheme) => css`
@@ -141,12 +141,12 @@ const wrapperModifiers = {
       position: absolute;
       left: 0;
     }
-  `
-}
+  `,
+};
 
 type WrapperProps = {
-  isOpen: boolean
-}
+  isOpen: boolean;
+};
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isOpen }) => css`
@@ -155,4 +155,4 @@ export const Wrapper = styled.div<WrapperProps>`
       ${!isOpen && wrapperModifiers.close(theme)}
     `}
   `}
-`
+`;

@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
-import media from 'styled-media-query'
-import { Container } from 'components/Container'
+import styled, { css } from 'styled-components';
+import media from 'styled-media-query';
+import { Container } from 'components/Container';
 
 export const Main = styled(Container)`
   ${({ theme }) => css`
@@ -10,7 +10,7 @@ export const Main = styled(Container)`
     gap: ${theme.grid.gutter};
     `}
   `}
-`
+`;
 
 export const ShowMore = styled.div`
   ${({ theme }) => css`
@@ -25,4 +25,4 @@ export const ShowMore = styled.div`
       color: ${theme.colors.primary};
     }
   `}
-`
+`;

@@ -1,39 +1,39 @@
 import {
   AddShoppingCart,
-  FavoriteBorder
-} from '@styled-icons/material-outlined'
+  FavoriteBorder,
+} from '@styled-icons/material-outlined';
 
-import Button from 'components/Button'
-import Heading from 'components/Heading'
-import Ribbon from 'components/Ribbon'
+import Button from 'components/Button';
+import Heading from 'components/Heading';
+import Ribbon from 'components/Ribbon';
 
-import * as S from './styles'
+import { Wrapper, ButtonsWrapper, Description } from './styles';
 
 export type GameInfoProps = {
-  title: string
-  description: string
-  price: string
-}
+  title: string;
+  description: string;
+  price: string;
+};
 
 const GameInfo = ({ title, description, price }: GameInfoProps) => (
-  <S.Wrapper>
+  <Wrapper>
     <Heading color="black" lineBottom>
       {title}
     </Heading>
 
     <Ribbon color="secondary">{`$${price}`}</Ribbon>
 
-    <S.Description>{description}</S.Description>
+    <Description>{description}</Description>
 
-    <S.ButtonsWrapper>
+    <ButtonsWrapper>
       <Button icon={<AddShoppingCart />} size="large">
         Add to cart
       </Button>
       <Button icon={<FavoriteBorder />} size="large" minimal>
         Wishlist
       </Button>
-    </S.ButtonsWrapper>
-  </S.Wrapper>
-)
+    </ButtonsWrapper>
+  </Wrapper>
+);
 
-export default GameInfo
+export default GameInfo;

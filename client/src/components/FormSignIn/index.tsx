@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import { Email, Lock } from '@styled-icons/material-outlined'
+import Link from 'next/link';
+import { Email, Lock } from '@styled-icons/material-outlined';
 
-import { FormLink, FormWrapper } from 'components/Form'
-import Button from 'components/Button'
-import TextField from 'components/TextField'
+import { FormLink, FormWrapper } from 'components/Form';
+import Button from 'components/Button';
+import TextField from 'components/TextField';
 
-import * as S from './styles'
+import { ForgotPassword } from './styles';
 
 const FormSignIn = () => (
   <FormWrapper>
@@ -22,7 +22,7 @@ const FormSignIn = () => (
         type="password"
         icon={<Lock />}
       />
-      <S.ForgotPassword href="#">Forgot your password?</S.ForgotPassword>
+      <ForgotPassword href="#">Forgot your password?</ForgotPassword>
 
       <Button size="large" fullWidth>
         Sign in now
@@ -36,6 +36,6 @@ const FormSignIn = () => (
       </FormLink>
     </form>
   </FormWrapper>
-)
+);
 
-export default FormSignIn
+export default FormSignIn;

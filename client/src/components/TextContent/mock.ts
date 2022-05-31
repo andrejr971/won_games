@@ -1,4 +1,4 @@
-import { TextContentProps } from '.'
+import { TextContentProps } from '.';
 
 const TextContentMock: TextContentProps = {
   title: 'Description',
@@ -49,7 +49,7 @@ const TextContentMock: TextContentProps = {
   amet consectetur adipisicing elit. Quia praesentium cupiditate tenetur
   quam illum. Fugiat consectetur assumenda in, vitae nemo, eaque quia
   numquam ad perspiciatis doloribus error eveniet quo officia?
-</p>`
-}
+</p>`,
+};
 
-export default TextContentMock
+export default TextContentMock;

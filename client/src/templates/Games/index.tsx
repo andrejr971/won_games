@@ -1,46 +1,46 @@
-import Base from 'templates/Base'
-import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
+import Base from 'templates/Base';
+import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
 
-import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
-import GameCard, { GameCardProps } from 'components/GameCard'
-import { Grid } from 'components/Grid'
+import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar';
+import GameCard, { GameCardProps } from 'components/GameCard';
+import { Grid } from 'components/Grid';
 
-import * as S from './styles'
+import { Main, ShowMore } from './styles';
 
 export type GamesTemplateProps = {
-  games?: GameCardProps[]
-  filterItems: ItemProps[]
-}
+  games?: GameCardProps[];
+  filterItems: ItemProps[];
+};
 
 const GamesTemplate = ({ filterItems, games = [] }: GamesTemplateProps) => {
   const handleFilter = () => {
-    return
-  }
+    return;
+  };
 
   const handleShowMore = () => {
-    return
-  }
+    return;
+  };
 
   return (
     <Base>
-      <S.Main>
+      <Main>
         <ExploreSidebar items={filterItems} onFilter={handleFilter} />
 
         <section>
           <Grid>
-            {games.map((item) => (
+            {games.map(item => (
               <GameCard key={item.title} {...item} />
             ))}
           </Grid>
 
-          <S.ShowMore role="button" onClick={handleShowMore}>
+          <ShowMore role="button" onClick={handleShowMore}>
             <p>Show More</p>
             <ArrowDown size={35} />
-          </S.ShowMore>
+          </ShowMore>
         </section>
-      </S.Main>
+      </Main>
     </Base>
-  )
-}
+  );
+};
 
-export default GamesTemplate
+export default GamesTemplate;

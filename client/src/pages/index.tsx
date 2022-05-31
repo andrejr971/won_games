@@ -1,10 +1,10 @@
-import Home, { HomeTemplateProps } from 'templates/Home'
-import bannersMock from 'components/BannerSlider/mock'
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
+import Home, { HomeTemplateProps } from 'templates/Home';
+import bannersMock from 'components/BannerSlider/mock';
+import gamesMock from 'components/GameCardSlider/mock';
+import highlightMock from 'components/Highlight/mock';
 
 export default function Index(props: HomeTemplateProps) {
-  return <Home {...props} />
+  return <Home {...props} />;
 }
 
 // ATENÇÃO:
@@ -25,7 +25,7 @@ export async function getServerSideProps() {
       upcomingHighlight: highlightMock,
       upcomingMoreGames: gamesMock,
       freeGames: gamesMock,
-      freeHighlight: highlightMock
-    }
-  }
+      freeHighlight: highlightMock,
+    },
+  };
 }

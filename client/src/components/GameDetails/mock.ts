@@ -4,5 +4,5 @@ export default {
   platforms: ['windows', 'mac', 'linux'],
   publisher: 'Walkabout',
   rating: 'BR0',
-  genres: ['Role-playing']
-}
+  genres: ['Role-playing'],
+};

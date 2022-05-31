@@ -1,20 +1,20 @@
-import Empty from 'components/Empty'
-import GameItem, { GameItemProps } from 'components/GameItem'
-import Heading from 'components/Heading'
-import * as S from './styles'
+import Empty from 'components/Empty';
+import GameItem, { GameItemProps } from 'components/GameItem';
+import Heading from 'components/Heading';
+import { Wrapper } from './styles';
 
 export type OrdersListProps = {
-  items?: GameItemProps[]
-}
+  items?: GameItemProps[];
+};
 
 const OrdersList = ({ items = [] }: OrdersListProps) => (
-  <S.Wrapper>
+  <Wrapper>
     <Heading lineBottom lineColor="primary" color="black" size="small">
       My orders
     </Heading>
 
     {items.length ? (
-      items.map((item) => <GameItem key={item.downloadLink} {...item} />)
+      items.map(item => <GameItem key={item.downloadLink} {...item} />)
     ) : (
       <Empty
         title="You have no orders yet"
@@ -22,7 +22,7 @@ const OrdersList = ({ items = [] }: OrdersListProps) => (
         hasLink
       />
     )}
-  </S.Wrapper>
-)
+  </Wrapper>
+);
 
-export default OrdersList
+export default OrdersList;

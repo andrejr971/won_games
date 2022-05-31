@@ -1,5 +1,5 @@
-import { Story, Meta } from '@storybook/react/types-6-0'
-import Radio, { RadioProps } from '.'
+import { Story, Meta } from '@storybook/react/types-6-0';
+import Radio, { RadioProps } from '.';
 
 export default {
   title: 'Form/Radio',
@@ -7,15 +7,15 @@ export default {
   parameters: {
     layout: 'fullscreen',
     backgrounds: {
-      default: 'won-dark'
-    }
+      default: 'won-dark',
+    },
   },
   argTypes: {
-    onCheck: { action: 'checked' }
-  }
-} as Meta
+    onCheck: { action: 'checked' },
+  },
+} as Meta;
 
-export const Default: Story<RadioProps> = (args) => (
+export const Default: Story<RadioProps> = args => (
   <>
     <div style={{ padding: 10 }}>
       <Radio
@@ -49,4 +49,4 @@ export const Default: Story<RadioProps> = (args) => (
       />
     </div>
   </>
-)
+);

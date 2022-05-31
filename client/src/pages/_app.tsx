@@ -1,14 +1,14 @@
-import { ApolloProvider } from '@apollo/client'
-import { ThemeProvider } from 'styled-components'
-import { AppProps } from 'next/app'
-import Head from 'next/head'
+import { ApolloProvider } from '@apollo/client';
+import { ThemeProvider } from 'styled-components';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
 
-import GlobalStyles from 'styles/global'
-import theme from 'styles/theme'
-import { useApollo } from 'utils/apollo'
+import GlobalStyles from 'styles/global';
+import theme from 'styles/theme';
+import { useApollo } from 'utils/apollo';
 
 function App({ Component, pageProps }: AppProps) {
-  const client = useApollo(pageProps.initialApoloState)
+  const client = useApollo(pageProps.initialApoloState);
 
   return (
     <ApolloProvider client={client}>
@@ -27,7 +27,7 @@ function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </ThemeProvider>
     </ApolloProvider>
-  )
+  );
 }
 
-export default App
+export default App;

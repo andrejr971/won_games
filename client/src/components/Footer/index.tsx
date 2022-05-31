@@ -1,22 +1,23 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import Heading from 'components/Heading'
-import Logo from 'components/Logo'
-import * as S from './styles'
+import Heading from 'components/Heading';
+import Logo from 'components/Logo';
+
+import { Wrapper, Column, Content, Copyright } from './styles';
 
 const Footer = () => (
-  <S.Wrapper>
+  <Wrapper>
     <Logo color="black" />
-    <S.Content>
-      <S.Column>
+    <Content>
+      <Column>
         <Heading color="black" size="small" lineBottom lineColor="secondary">
           Contact Us
         </Heading>
 
-        <a href="mailto:sac@wongames.com">sac@wongames.com</a>
-      </S.Column>
+        <a href="mailto:sac@wongamecom">sac@wongamecom</a>
+      </Column>
 
-      <S.Column>
+      <Column>
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Follow us
         </Heading>
@@ -51,9 +52,9 @@ const Footer = () => (
             Facebook
           </a>
         </nav>
-      </S.Column>
+      </Column>
 
-      <S.Column>
+      <Column>
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Links
         </Heading>
@@ -69,20 +70,20 @@ const Footer = () => (
             <a>Buscar</a>
           </Link>
         </nav>
-      </S.Column>
+      </Column>
 
-      <S.Column aria-labelledby="footer-contact">
+      <Column aria-labelledby="footer-contact">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Location
         </Heading>
         <span>Lorem ipsum dolor sit.</span>
         <span>Lorem Ipsum</span>
         <span>Lorem, ipsum dolor.</span>
-      </S.Column>
-    </S.Content>
+      </Column>
+    </Content>
 
-    <S.Copyright>Won Games 2020 © All rights reserved.</S.Copyright>
-  </S.Wrapper>
-)
+    <Copyright>Won Games 2020 © All rights reserved.</Copyright>
+  </Wrapper>
+);
 
-export default Footer
+export default Footer;
