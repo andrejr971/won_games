@@ -20,14 +20,15 @@ import {
   Price,
   Title,
 } from './styles';
+import formatPrice from 'utils/formatPrice';
 
 export type GameCardProps = {
   slug: string;
   title: string;
   developer: string;
   img: string;
-  price: string;
-  promotionalPrice?: string;
+  price: number;
+  promotionalPrice?: number;
   favorite?: boolean;
   ribbon?: React.ReactNode;
   ribbonColor?: RibbonColors;
@@ -74,8 +75,10 @@ const GameCard = ({
         )}
       </FavButton>
       <BuyBox>
-        {!!promotionalPrice && <Price isPromotional>{price}</Price>}
-        <Price>{promotionalPrice || price}</Price>
+        {!!promotionalPrice && (
+          <Price isPromotional>{formatPrice(price)}</Price>
+        )}
+        <Price>{formatPrice(promotionalPrice || price)}</Price>
         <Button icon={<AddShoppingCart />} size="small" />
       </BuyBox>
     </Content>
