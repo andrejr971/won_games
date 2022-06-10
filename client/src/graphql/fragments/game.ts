@@ -7,6 +7,9 @@ export const GameFrament = gql`
     developers {
       name
     }
+    plataforms {
+      name
+    }
     cover {
       url
     }
