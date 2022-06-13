@@ -1,44 +1,58 @@
 import Link from 'next/link';
 import Button from 'components/Button';
-import GameItem, { GameItemProps } from 'components/GameItem';
+import GameItem from 'components/GameItem';
 
-import { Wrapper, Footer, Total } from './styles';
+import { Wrapper, Footer, Total, Loading, GamesList } from './styles';
 
 import Empty from 'components/Empty';
+import { useCart } from 'hooks/use-cart';
+import Loader from 'components/Loader';
 
 export type CartListProps = {
-  items?: GameItemProps[];
-  total?: string;
   hasButton?: boolean;
 };
 
-const CartList = ({ items = [], total, hasButton = false }: CartListProps) => (
-  <Wrapper isEmpty={!items.length}>
-    {items.length ? (
-      <>
-        {items.map(item => (
-          <GameItem key={item.title} {...item} />
-        ))}
+const CartList = ({ hasButton = false }: CartListProps) => {
+  const { total, items, loading } = useCart();
 
-        <Footer>
-          {!hasButton && <span>Total:</span>}
-          <Total>{total}</Total>
+  if (loading) {
+    return (
+      <Loading>
+        <Loader />
+      </Loading>
+    );
+  }
 
-          {hasButton && (
-            <Link href="/cart">
-              <Button as="a">Buy it now</Button>
-            </Link>
-          )}
-        </Footer>
-      </>
-    ) : (
-      <Empty
-        title="Your cart is empty"
-        description="Go back to the store and explore great games and offers."
-        hasLink
-      />
-    )}
-  </Wrapper>
-);
+  return (
+    <Wrapper isEmpty={!items.length}>
+      {items.length ? (
+        <>
+          <GamesList>
+            {items.map(item => (
+              <GameItem key={item.title} {...item} />
+            ))}
+          </GamesList>
+
+          <Footer>
+            {!hasButton && <span>Total:</span>}
+            <Total>{total}</Total>
+
+            {hasButton && (
+              <Link href="/cart">
+                <Button as="a">Buy it now</Button>
+              </Link>
+            )}
+          </Footer>
+        </>
+      ) : (
+        <Empty
+          title="Your cart is empty"
+          description="Go back to the store and explore great games and offers."
+          hasLink
+        />
+      )}
+    </Wrapper>
+  );
+};
 
 export default CartList;

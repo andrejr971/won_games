@@ -10,7 +10,6 @@ import Base from 'templates/Base';
 import { Info } from '@styled-icons/material-outlined/Info';
 
 import { Content, Text } from './styles';
-import Empty from 'components/Empty';
 
 export type CartProps = {
   recommendedTitle: string;
@@ -23,8 +22,6 @@ const Cart = ({
   recommendedTitle,
   recommendedGames,
   recommendedHighlight,
-  items,
-  total,
   cards,
 }: CartProps) => {
   const handlePayment = () => ({});
@@ -36,19 +33,12 @@ const Cart = ({
           My cart
         </Heading>
 
-        {items?.length ? (
-          <Content>
-            <CartList items={items} total={total} />
+        <Content>
+          <CartList />
 
-            <PaymentOptions cards={cards} handlePayment={handlePayment} />
-          </Content>
-        ) : (
-          <Empty
-            title="Your cart is empty"
-            description="Go back to the store and explore great games and offers"
-            hasLink
-          />
-        )}
+          <PaymentOptions cards={cards} handlePayment={handlePayment} />
+        </Content>
+
         <Text>
           <Info size={18} /> Your purchase is protected by a secure connection
           from the WON platform. By purchasing from our store you agree and
