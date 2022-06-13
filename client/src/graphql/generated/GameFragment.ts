@@ -4,24 +4,24 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: GameFrament
+// GraphQL fragment: GameFragment
 // ====================================================
 
-export interface GameFrament_developers {
-  __typename: "Developer";
-  name: string;
-}
-
-export interface GameFrament_cover {
+export interface GameFragment_cover {
   __typename: "UploadFile";
   url: string;
 }
 
-export interface GameFrament {
+export interface GameFragment_developers {
+  __typename: "Developer";
+  name: string;
+}
+
+export interface GameFragment {
   __typename: "Game";
   name: string;
   slug: string;
-  developers: GameFrament_developers[];
-  cover: GameFrament_cover | null;
+  cover: GameFragment_cover | null;
+  developers: GameFragment_developers[];
   price: number;
 }

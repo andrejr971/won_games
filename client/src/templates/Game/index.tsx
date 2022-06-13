@@ -24,10 +24,11 @@ export type GameTemplateProps = {
   gallery?: GalleryImageProps[];
   description: string;
   details: GameDetailsProps;
+  upcomingTitle: string;
   upcomingGames: GameCardProps[];
   upcomingHighlight: HighlightProps;
+  recommendedTitle: string;
   recommendedGames: GameCardProps[];
-  recommendedTitle?: string;
 };
 
 const Game = ({
@@ -36,10 +37,11 @@ const Game = ({
   gallery,
   description,
   details,
+  upcomingTitle,
   upcomingGames,
   upcomingHighlight,
-  recommendedGames,
   recommendedTitle,
+  recommendedGames,
 }: GameTemplateProps) => (
   <Base>
     <Cover src={cover} role="image" aria-label="cover" />
@@ -63,15 +65,12 @@ const Game = ({
       </SectionGameDetails>
 
       <Showcase
-        title="Upcoming"
+        title={upcomingTitle}
         games={upcomingGames}
         highlight={upcomingHighlight}
       />
 
-      <Showcase
-        title={recommendedTitle || 'You may like these games'}
-        games={recommendedGames}
-      />
+      <Showcase title={recommendedTitle} games={recommendedGames} />
     </Main>
   </Base>
 );

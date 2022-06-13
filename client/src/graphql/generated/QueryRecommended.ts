@@ -25,14 +25,9 @@ export interface QueryRecommended_recommended_section_highlight {
   subtitle: string;
   background: QueryRecommended_recommended_section_highlight_background | null;
   floatImage: QueryRecommended_recommended_section_highlight_floatImage | null;
-  buttonLink: string;
   buttonLabel: string;
+  buttonLink: string;
   alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null;
-}
-
-export interface QueryRecommended_recommended_section_games_developers {
-  __typename: "Developer";
-  name: string;
 }
 
 export interface QueryRecommended_recommended_section_games_cover {
@@ -40,12 +35,17 @@ export interface QueryRecommended_recommended_section_games_cover {
   url: string;
 }
 
+export interface QueryRecommended_recommended_section_games_developers {
+  __typename: "Developer";
+  name: string;
+}
+
 export interface QueryRecommended_recommended_section_games {
   __typename: "Game";
   name: string;
   slug: string;
-  developers: QueryRecommended_recommended_section_games_developers[];
   cover: QueryRecommended_recommended_section_games_cover | null;
+  developers: QueryRecommended_recommended_section_games_developers[];
   price: number;
 }
 

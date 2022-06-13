@@ -9,22 +9,22 @@ import { ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT } from "./globalTypes";
 // GraphQL query operation: QueryUpcoming
 // ====================================================
 
-export interface QueryUpcoming_upcomingGames_developers {
-  __typename: "Developer";
-  name: string;
-}
-
 export interface QueryUpcoming_upcomingGames_cover {
   __typename: "UploadFile";
   url: string;
+}
+
+export interface QueryUpcoming_upcomingGames_developers {
+  __typename: "Developer";
+  name: string;
 }
 
 export interface QueryUpcoming_upcomingGames {
   __typename: "Game";
   name: string;
   slug: string;
-  developers: QueryUpcoming_upcomingGames_developers[];
   cover: QueryUpcoming_upcomingGames_cover | null;
+  developers: QueryUpcoming_upcomingGames_developers[];
   price: number;
 }
 
@@ -44,8 +44,8 @@ export interface QueryUpcoming_showcase_upcomingGames_highlight {
   subtitle: string;
   background: QueryUpcoming_showcase_upcomingGames_highlight_background | null;
   floatImage: QueryUpcoming_showcase_upcomingGames_highlight_floatImage | null;
-  buttonLink: string;
   buttonLabel: string;
+  buttonLink: string;
   alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null;
 }
 

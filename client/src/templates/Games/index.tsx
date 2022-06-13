@@ -1,3 +1,5 @@
+import { useQueryGames } from 'graphql/queries/games';
+
 import Base from 'templates/Base';
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
 
@@ -6,7 +8,6 @@ import GameCard, { GameCardProps } from 'components/GameCard';
 import { Grid } from 'components/Grid';
 
 import { Main, ShowMore } from './styles';
-import { useQueryGames } from 'graphql/queries/games';
 
 export type GamesTemplateProps = {
   games?: GameCardProps[];

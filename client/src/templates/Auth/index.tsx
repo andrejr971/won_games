@@ -2,15 +2,14 @@ import Link from 'next/link';
 
 import Heading from 'components/Heading';
 import Logo from 'components/Logo';
-
 import {
-  Wrapper,
   BannerBlock,
   BannerContent,
   Content,
   ContentWrapper,
   Footer,
   Subtitle,
+  Wrapper,
 } from './styles';
 
 type AuthProps = {

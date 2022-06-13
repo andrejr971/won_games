@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { GameFrament } from 'graphql/fragments/game';
+import { GameFragment } from 'graphql/fragments/game';
 import { HighlightFragment } from 'graphql/fragments/highlight';
 
 export const QUERY_UPCOMING = gql`
@@ -9,8 +9,9 @@ export const QUERY_UPCOMING = gql`
       sort: "release_date:asc"
       limit: 8
     ) {
-      ...GameFrament
+      ...GameFragment
     }
+
     showcase: home {
       upcomingGames {
         title
@@ -21,6 +22,6 @@ export const QUERY_UPCOMING = gql`
     }
   }
 
-  ${GameFrament}
+  ${GameFragment}
   ${HighlightFragment}
 `;

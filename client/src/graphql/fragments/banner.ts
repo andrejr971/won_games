@@ -1,8 +1,7 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const BannerFragment = gql`
   fragment BannerFragment on Banner {
-    id
     image {
       url
     }
@@ -18,4 +17,4 @@ export const BannerFragment = gql`
       size
     }
   }
-`;
+`

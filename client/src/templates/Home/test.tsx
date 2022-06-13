@@ -10,17 +10,17 @@ import Home from '.';
 
 const props = {
   banners: bannerMock,
+  newGamesTitle: 'News',
   newGames: gamesMock,
+  mostPopularGamesTitle: 'Most Popular',
   mostPopularHighlight: highlightMock,
   mostPopularGames: gamesMock,
+  upcomingGamesTitle: 'Upcoming',
   upcomingGames: gamesMock,
   upcomingHighlight: highlightMock,
+  freeGamesTitle: 'Free Games',
   freeGames: gamesMock,
   freeHighlight: highlightMock,
-  freeGamesTitle: 'Free games',
-  mostPouplarGamesTitle: 'Most popular',
-  newGamesTitle: 'New Games',
-  upcomingGamesTitle: 'Upcoming',
 };
 
 jest.mock('components/Showcase', () => {

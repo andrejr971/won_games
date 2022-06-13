@@ -25,7 +25,7 @@ export interface HighlightFragment {
   subtitle: string;
   background: HighlightFragment_background | null;
   floatImage: HighlightFragment_floatImage | null;
-  buttonLink: string;
   buttonLabel: string;
+  buttonLink: string;
   alignment: ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT | null;
 }

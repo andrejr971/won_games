@@ -20,7 +20,7 @@ import {
   Price,
   Title,
 } from './styles';
-import formatPrice from 'utils/formatPrice';
+import formatPrice from 'utils/format-price';
 
 export type GameCardProps = {
   slug: string;

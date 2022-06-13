@@ -29,7 +29,6 @@ export interface BannerFragment_ribbon {
 
 export interface BannerFragment {
   __typename: "Banner";
-  id: string;
   image: BannerFragment_image | null;
   title: string;
   subtitle: string;

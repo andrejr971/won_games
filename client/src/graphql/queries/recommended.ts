@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { GameFrament } from 'graphql/fragments/game';
+import { GameFragment } from 'graphql/fragments/game';
 import { HighlightFragment } from 'graphql/fragments/highlight';
 
 export const QUERY_RECOMMENDED = gql`
@@ -11,12 +11,12 @@ export const QUERY_RECOMMENDED = gql`
           ...HighlightFragment
         }
         games {
-          ...GameFrament
+          ...GameFragment
         }
       }
     }
   }
 
-  ${GameFrament}
+  ${GameFragment}
   ${HighlightFragment}
 `;

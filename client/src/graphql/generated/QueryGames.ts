@@ -7,22 +7,22 @@
 // GraphQL query operation: QueryGames
 // ====================================================
 
-export interface QueryGames_games_developers {
-  __typename: "Developer";
-  name: string;
-}
-
 export interface QueryGames_games_cover {
   __typename: "UploadFile";
   url: string;
+}
+
+export interface QueryGames_games_developers {
+  __typename: "Developer";
+  name: string;
 }
 
 export interface QueryGames_games {
   __typename: "Game";
   name: string;
   slug: string;
-  developers: QueryGames_games_developers[];
   cover: QueryGames_games_cover | null;
+  developers: QueryGames_games_developers[];
   price: number;
 }
 
@@ -33,4 +33,6 @@ export interface QueryGames {
 export interface QueryGamesVariables {
   limit: number;
   start?: number | null;
+  where?: any | null;
+  sort?: string | null;
 }

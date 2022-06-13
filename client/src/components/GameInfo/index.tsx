@@ -6,7 +6,7 @@ import {
 import Button from 'components/Button';
 import Heading from 'components/Heading';
 import Ribbon from 'components/Ribbon';
-import formatPrice from 'utils/formatPrice';
+import formatPrice from 'utils/format-price';
 
 import { Wrapper, ButtonsWrapper, Description } from './styles';
 

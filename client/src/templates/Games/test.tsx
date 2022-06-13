@@ -1,13 +1,13 @@
 import { screen } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
-import userEvent from '@testing-library/user-event';
-import apolloCache from 'utils/apolloCache';
 
 import { renderWithTheme } from 'utils/tests/helpers';
 import filterItemsMock from 'components/ExploreSidebar/mock';
-import { fetchMoreMock, gamesMock } from './mock';
+import { fetchMoreMock, gamesMock } from './mocks';
 
 import Games from '.';
+import userEvent from '@testing-library/user-event';
+import apolloCache from 'utils/apolloCache';
 
 jest.mock('templates/Base', () => ({
   __esModule: true,
