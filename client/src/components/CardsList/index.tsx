@@ -1,11 +1,10 @@
-import Heading from 'components/Heading';
-import { PaymentCard } from 'components/PaymentOptions';
-
-import { Card } from './styles';
+import Heading from 'components/Heading'
+import { PaymentCard } from 'components/PaymentOptions'
+import * as S from './styles'
 
 export type CardsListProps = {
-  cards?: PaymentCard[];
-};
+  cards?: PaymentCard[]
+}
 
 const CardsList = ({ cards }: CardsListProps) => (
   <>
@@ -13,13 +12,13 @@ const CardsList = ({ cards }: CardsListProps) => (
       My cards
     </Heading>
 
-    {cards?.map(card => (
-      <Card key={card.number}>
+    {cards?.map((card) => (
+      <S.Card key={card.number}>
         <img src={card.img} alt={card.flag} />
         <span>{card.number}</span>
-      </Card>
+      </S.Card>
     ))}
   </>
-);
+)
 
-export default CardsList;
+export default CardsList

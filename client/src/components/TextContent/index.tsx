@@ -1,14 +1,14 @@
-import Heading from 'components/Heading';
+import Heading from 'components/Heading'
 
-import { Wrapper } from './styles';
+import * as S from './styles'
 
 export type TextContentProps = {
-  title?: string;
-  content: string;
-};
+  title?: string
+  content: string
+}
 
 const TextContent = ({ title, content }: TextContentProps) => (
-  <Wrapper>
+  <S.Wrapper>
     {!!title && (
       <Heading lineLeft lineColor="secondary">
         {title}
@@ -16,7 +16,7 @@ const TextContent = ({ title, content }: TextContentProps) => (
     )}
 
     <div dangerouslySetInnerHTML={{ __html: content }} />
-  </Wrapper>
-);
+  </S.Wrapper>
+)
 
-export default TextContent;
+export default TextContent

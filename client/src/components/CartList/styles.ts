@@ -1,12 +1,12 @@
-import { tint } from 'polished';
-import styled, { css } from 'styled-components';
-import media from 'styled-media-query';
+import { tint } from 'polished'
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
-import * as EmptyStyles from 'components/Empty/styles';
+import * as EmptyStyles from 'components/Empty/styles'
 
 type WrapperProps = {
-  isEmpty: boolean;
-};
+  isEmpty: boolean
+}
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isEmpty }) => css`
@@ -35,12 +35,27 @@ export const Wrapper = styled.div<WrapperProps>`
       }
     `}
   `}
-`;
+`
+
+export const Loading = styled.div`
+  ${({ theme }) => css`
+    background: ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    min-width: 56rem;
+    svg {
+      height: 10rem;
+      width: 10rem;
+    }
+  `}
+`
 
 export const GamesList = styled.div`
   max-height: 40rem;
   overflow-y: auto;
-`;
+`
 
 export const Footer = styled.div`
   ${({ theme }) => css`
@@ -58,26 +73,10 @@ export const Footer = styled.div`
       padding: ${theme.spacings.small};
     `};
   `}
-`;
-
-export const Loading = styled.div`
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40rem;
-    min-width: 56rem;
-
-    svg {
-      height: 10rem;
-      width: 10rem;
-    }
-  `}
-`;
+`
 
 export const Total = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
   `}
-`;
+`

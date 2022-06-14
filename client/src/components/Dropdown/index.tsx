@@ -1,23 +1,22 @@
-import { useState } from 'react';
-
-import { Wrapper, Content, Title, Overlay } from './styles';
+import { useState } from 'react'
+import * as S from './styles'
 
 export type DropdownProps = {
-  title: React.ReactNode;
-  children: React.ReactNode;
-};
+  title: React.ReactNode
+  children: React.ReactNode
+}
 
 const Dropdown = ({ title, children }: DropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <Wrapper isOpen={isOpen}>
-      <Title onClick={() => setIsOpen(!isOpen)}>{title}</Title>
+    <S.Wrapper isOpen={isOpen}>
+      <S.Title onClick={() => setIsOpen(!isOpen)}>{title}</S.Title>
 
-      <Content aria-hidden={!isOpen}>{children}</Content>
-      <Overlay aria-hidden={!isOpen} onClick={() => setIsOpen(!isOpen)} />
-    </Wrapper>
-  );
-};
+      <S.Content aria-hidden={!isOpen}>{children}</S.Content>
+      <S.Overlay aria-hidden={!isOpen} onClick={() => setIsOpen(!isOpen)} />
+    </S.Wrapper>
+  )
+}
 
-export default Dropdown;
+export default Dropdown

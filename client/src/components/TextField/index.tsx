@@ -1,15 +1,16 @@
-import { useState, InputHTMLAttributes } from 'react';
-import { Wrapper, Error, Icon, Input, InputWrapper, Label } from './styles';
+import { useState, InputHTMLAttributes } from 'react'
+
+import * as S from './styles'
 
 export type TextFieldProps = {
-  onInput?: (value: string) => void;
-  label?: string;
-  initialValue?: string;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
-  disabled?: boolean;
-  error?: string;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, 'onInput'>;
+  onInputChange?: (value: string) => void
+  label?: string
+  initialValue?: string
+  icon?: React.ReactNode
+  iconPosition?: 'left' | 'right'
+  disabled?: boolean
+  error?: string
+} & InputHTMLAttributes<HTMLInputElement>
 
 const TextField = ({
   icon,
@@ -19,24 +20,24 @@ const TextField = ({
   initialValue = '',
   error,
   disabled = false,
-  onInput,
+  onInputChange,
   ...props
 }: TextFieldProps) => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState(initialValue)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value;
-    setValue(newValue);
+    const newValue = e.currentTarget.value
+    setValue(newValue)
 
-    !!onInput && onInput(newValue);
-  };
+    !!onInputChange && onInputChange(newValue)
+  }
 
   return (
-    <Wrapper disabled={disabled} error={!!error}>
-      {!!label && <Label htmlFor={name}>{label}</Label>}
-      <InputWrapper>
-        {!!icon && <Icon iconPosition={iconPosition}>{icon}</Icon>}
-        <Input
+    <S.Wrapper disabled={disabled} error={!!error}>
+      {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
+      <S.InputWrapper>
+        {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
+        <S.Input
           type="text"
           onChange={onChange}
           value={value}
@@ -46,10 +47,10 @@ const TextField = ({
           {...(label ? { id: name } : {})}
           {...props}
         />
-      </InputWrapper>
-      {!!error && <Error>{error}</Error>}
-    </Wrapper>
-  );
-};
+      </S.InputWrapper>
+      {!!error && <S.Error>{error}</S.Error>}
+    </S.Wrapper>
+  )
+}
 
-export default TextField;
+export default TextField

@@ -1,48 +1,47 @@
-import Link from 'next/link';
-import Button from 'components/Button';
-import GameItem from 'components/GameItem';
+import Link from 'next/link'
+import Button from 'components/Button'
+import GameItem from 'components/GameItem'
 
-import { Wrapper, Footer, Total, Loading, GamesList } from './styles';
-
-import Empty from 'components/Empty';
-import { useCart } from 'hooks/use-cart';
-import Loader from 'components/Loader';
+import * as S from './styles'
+import Empty from 'components/Empty'
+import { useCart } from 'hooks/use-cart'
+import Loader from 'components/Loader'
 
 export type CartListProps = {
-  hasButton?: boolean;
-};
+  hasButton?: boolean
+}
 
 const CartList = ({ hasButton = false }: CartListProps) => {
-  const { total, items, loading } = useCart();
+  const { items, total, loading } = useCart()
 
   if (loading) {
     return (
-      <Loading>
+      <S.Loading>
         <Loader />
-      </Loading>
-    );
+      </S.Loading>
+    )
   }
 
   return (
-    <Wrapper isEmpty={!items.length}>
+    <S.Wrapper isEmpty={!items.length}>
       {items.length ? (
         <>
-          <GamesList>
-            {items.map(item => (
+          <S.GamesList>
+            {items.map((item) => (
               <GameItem key={item.title} {...item} />
             ))}
-          </GamesList>
+          </S.GamesList>
 
-          <Footer>
+          <S.Footer>
             {!hasButton && <span>Total:</span>}
-            <Total>{total}</Total>
+            <S.Total>{total}</S.Total>
 
             {hasButton && (
               <Link href="/cart">
                 <Button as="a">Buy it now</Button>
               </Link>
             )}
-          </Footer>
+          </S.Footer>
         </>
       ) : (
         <Empty
@@ -51,8 +50,8 @@ const CartList = ({ hasButton = false }: CartListProps) => {
           hasLink
         />
       )}
-    </Wrapper>
-  );
-};
+    </S.Wrapper>
+  )
+}
 
-export default CartList;
+export default CartList

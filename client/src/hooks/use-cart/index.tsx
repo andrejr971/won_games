@@ -1,28 +1,28 @@
-import { useContext, createContext, useEffect, useState } from 'react';
-import { getStorageItem, setStorageItem } from 'utils/localStorage';
-import { useQueryGames } from 'graphql/queries/games';
-import { cartMapper } from 'utils/mappers';
-import formatPrice from 'utils/format-price';
+import { useQueryGames } from 'graphql/queries/games'
+import { useContext, createContext, useState, useEffect } from 'react'
+import formatPrice from 'utils/format-price'
+import { getStorageItem, setStorageItem } from 'utils/localStorage'
+import { cartMapper } from 'utils/mappers'
 
-const CART_KEY = 'cartItems';
+const CART_KEY = 'cartItems'
 
 type CartItem = {
-  id: string;
-  img: string;
-  title: string;
-  price: string;
-};
+  id: string
+  img: string
+  title: string
+  price: string
+}
 
 export type CartContextData = {
-  items: CartItem[];
-  quantity: number;
-  total: string;
-  isInCart: (id: string) => boolean;
-  addToCart: (id: string) => void;
-  removeFromCart: (id: string) => void;
-  clearCart: () => void;
-  loading: boolean;
-};
+  items: CartItem[]
+  quantity: number
+  total: string
+  isInCart: (id: string) => boolean
+  addToCart: (id: string) => void
+  removeFromCart: (id: string) => void
+  clearCart: () => void
+  loading: boolean
+}
 
 export const CartContextDefaultValues = {
   items: [],
@@ -32,62 +32,59 @@ export const CartContextDefaultValues = {
   addToCart: () => null,
   removeFromCart: () => null,
   clearCart: () => null,
-  loading: false,
-};
+  loading: false
+}
 
 export const CartContext = createContext<CartContextData>(
-  CartContextDefaultValues,
-);
+  CartContextDefaultValues
+)
 
 export type CartProviderProps = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartItems, setCartItems] = useState<string[]>([]);
+  const [cartItems, setCartItems] = useState<string[]>([])
 
   useEffect(() => {
-    const data = getStorageItem(CART_KEY);
+    const data = getStorageItem(CART_KEY)
 
     if (data) {
-      setCartItems(data);
+      setCartItems(data)
     }
-  }, []);
+  }, [])
 
   const { data, loading } = useQueryGames({
     skip: !cartItems?.length,
     variables: {
       where: {
-        id: cartItems,
-      },
-    },
-  });
+        id: cartItems
+      }
+    }
+  })
 
   const total = data?.games.reduce((acc, game) => {
-    return acc + game.price;
-  }, 0);
+    return acc + game.price
+  }, 0)
 
-  function isInCart(id: string) {
-    return cartItems.includes(id);
+  const isInCart = (id: string) => (id ? cartItems.includes(id) : false)
+
+  const saveCart = (cartItems: string[]) => {
+    setCartItems(cartItems)
+    setStorageItem(CART_KEY, cartItems)
   }
 
-  function saveCart(cartItems: string[]) {
-    setCartItems(cartItems);
-    setStorageItem(CART_KEY, cartItems);
+  const addToCart = (id: string) => {
+    saveCart([...cartItems, id])
   }
 
-  function addToCart(id: string) {
-    const newItems = [...cartItems, id];
-    saveCart(newItems);
+  const removeFromCart = (id: string) => {
+    const newCartItems = cartItems.filter((itemId: string) => itemId !== id)
+    saveCart(newCartItems)
   }
 
-  function removeFromCart(id: string) {
-    const newItems = cartItems.filter(key => key !== id);
-    saveCart(newItems);
-  }
-
-  function clearCart() {
-    saveCart([]);
+  const clearCart = () => {
+    saveCart([])
   }
 
   return (
@@ -100,14 +97,14 @@ const CartProvider = ({ children }: CartProviderProps) => {
         addToCart,
         removeFromCart,
         clearCart,
-        loading,
+        loading
       }}
     >
       {children}
     </CartContext.Provider>
-  );
-};
+  )
+}
 
-const useCart = () => useContext(CartContext);
+const useCart = () => useContext(CartContext)
 
-export { CartProvider, useCart };
+export { CartProvider, useCart }

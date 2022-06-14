@@ -1,46 +1,46 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import { signOut } from 'next-auth/client'
 import {
   AccountCircle,
   CreditCard,
   ExitToApp,
-  FormatListBulleted,
-} from '@styled-icons/material-outlined';
-import { Link as NavLink, Nav } from './styles';
+  FormatListBulleted
+} from '@styled-icons/material-outlined'
+
+import * as S from './styles'
 
 export type ProfileMenuProps = {
-  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string;
-};
+  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string
+}
 
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
-  <Nav>
+  <S.Nav>
     <Link href="/profile/me" passHref>
-      <NavLink isActive={activeLink === '/profile/me'} title="My profile">
+      <S.Link isActive={activeLink === '/profile/me'} title="My profile">
         <AccountCircle size={24} />
         <span>My profile</span>
-      </NavLink>
+      </S.Link>
     </Link>
 
     <Link href="/profile/cards" passHref>
-      <NavLink isActive={activeLink === '/profile/cards'} title="My cards">
+      <S.Link isActive={activeLink === '/profile/cards'} title="My cards">
         <CreditCard size={24} />
         <span>My cards</span>
-      </NavLink>
+      </S.Link>
     </Link>
 
     <Link href="/profile/orders" passHref>
-      <NavLink isActive={activeLink === '/profile/orders'} title="My orders">
+      <S.Link isActive={activeLink === '/profile/orders'} title="My orders">
         <FormatListBulleted size={24} />
         <span>My orders</span>
-      </NavLink>
+      </S.Link>
     </Link>
 
-    <Link href="/logout" passHref>
-      <NavLink>
-        <ExitToApp size={24} title="Sign out" />
-        <span>Sign out</span>
-      </NavLink>
-    </Link>
-  </Nav>
-);
+    <S.Link role="button" onClick={() => signOut()}>
+      <ExitToApp size={24} title="Sign out" />
+      <span>Sign out</span>
+    </S.Link>
+  </S.Nav>
+)
 
-export default ProfileMenu;
+export default ProfileMenu

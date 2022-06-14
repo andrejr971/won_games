@@ -1,10 +1,10 @@
-import { render, screen } from 'utils/test-utils';
-import Loader from '.';
+import { render, screen } from 'utils/test-utils'
+import Loader from '.'
 
 describe('<Loader />', () => {
   it('Should render correctly', () => {
-    render(<Loader />);
+    render(<Loader />)
 
-    expect(screen.getByTitle(/loading/i)).toBeInTheDocument();
-  });
-});
+    expect(screen.getByTitle(/loading/i)).toBeInTheDocument()
+  })
+})

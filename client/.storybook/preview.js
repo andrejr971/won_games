@@ -1,7 +1,7 @@
-import { ThemeProvider } from 'styled-components';
-import GlobalStyles from 'styles/global';
-import { CartContext, CartContextDefaultValues } from 'hooks/use-cart';
-import theme from 'styles/theme';
+import { ThemeProvider } from 'styled-components'
+import { CartContext, CartContextDefaultValues } from 'hooks/use-cart'
+import GlobalStyles from 'styles/global'
+import theme from 'styles/theme'
 
 export const parameters = {
   backgrounds: {
@@ -9,15 +9,15 @@ export const parameters = {
     values: [
       {
         name: 'won-light',
-        value: theme.colors.white,
+        value: theme.colors.white
       },
       {
         name: 'won-dark',
-        value: theme.colors.mainBg,
-      },
-    ],
-  },
-};
+        value: theme.colors.mainBg
+      }
+    ]
+  }
+}
 
 export const decorators = [
   (Story, context) => (
@@ -26,12 +26,12 @@ export const decorators = [
         value={{
           ...CartContextDefaultValues,
           ...(context?.args?.cartContextValue || {}),
-          ...context.args,
+          ...context.args
         }}
       >
         <GlobalStyles removeBg />
         <Story />
       </CartContext.Provider>
     </ThemeProvider>
-  ),
-];
+  )
+]

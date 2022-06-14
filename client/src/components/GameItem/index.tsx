@@ -1,35 +1,23 @@
-import { Download } from '@styled-icons/boxicons-solid/Download';
-import { useCart } from 'hooks/use-cart';
+import { Download } from '@styled-icons/boxicons-solid/Download'
+import { useCart } from 'hooks/use-cart'
 
-import {
-  Wrapper,
-  CardInfo,
-  Content,
-  DownloadLink,
-  GameContent,
-  ImageBox,
-  PaymentContent,
-  Price,
-  Title,
-  Group,
-  Remove,
-} from './styles';
+import * as S from './styles'
 
 export type PaymentInfoProps = {
-  number: string;
-  flag: string;
-  img: string;
-  purchaseDate: string;
-};
+  number: string
+  flag: string
+  img: string
+  purchaseDate: string
+}
 
 export type GameItemProps = {
-  id: string;
-  img: string;
-  title: string;
-  price: string;
-  downloadLink?: string;
-  paymentInfo?: PaymentInfoProps;
-};
+  id: string
+  img: string
+  title: string
+  price: string
+  downloadLink?: string
+  paymentInfo?: PaymentInfoProps
+}
 
 const GameItem = ({
   id,
@@ -37,50 +25,50 @@ const GameItem = ({
   title,
   price,
   downloadLink,
-  paymentInfo,
+  paymentInfo
 }: GameItemProps) => {
-  const { isInCart, removeFromCart } = useCart();
+  const { isInCart, removeFromCart } = useCart()
 
   return (
-    <Wrapper>
-      <GameContent>
-        <ImageBox>
+    <S.Wrapper>
+      <S.GameContent>
+        <S.ImageBox>
           <img src={img} alt={title} />
-        </ImageBox>
+        </S.ImageBox>
 
-        <Content>
-          <Title>
+        <S.Content>
+          <S.Title>
             {title}
             {!!downloadLink && (
-              <DownloadLink
+              <S.DownloadLink
                 href={downloadLink}
                 target="_blank"
                 aria-label={`Get ${title} here`}
               >
                 <Download size={22} />
-              </DownloadLink>
+              </S.DownloadLink>
             )}
-          </Title>
-          <Group>
-            <Price>{price}</Price>
+          </S.Title>
+          <S.Group>
+            <S.Price>{price}</S.Price>
             {isInCart(id) && (
-              <Remove onClick={() => removeFromCart(id)}>Remove</Remove>
+              <S.Remove onClick={() => removeFromCart(id)}>Remove</S.Remove>
             )}
-          </Group>
-        </Content>
-      </GameContent>
+          </S.Group>
+        </S.Content>
+      </S.GameContent>
 
       {!!paymentInfo && (
-        <PaymentContent>
+        <S.PaymentContent>
           <p>{paymentInfo.purchaseDate}</p>
-          <CardInfo>
+          <S.CardInfo>
             <span>{paymentInfo.number}</span>
             <img src={paymentInfo.img} alt={paymentInfo.flag} />
-          </CardInfo>
-        </PaymentContent>
+          </S.CardInfo>
+        </S.PaymentContent>
       )}
-    </Wrapper>
-  );
-};
+    </S.Wrapper>
+  )
+}
 
-export default GameItem;
+export default GameItem

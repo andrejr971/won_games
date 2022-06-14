@@ -1,17 +1,17 @@
-import { initializeApollo } from 'utils/apollo';
-import { QUERY_GAMES } from 'graphql/queries/games';
-import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames';
+import { initializeApollo } from 'utils/apollo'
+import { QUERY_GAMES } from 'graphql/queries/games'
+import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
+import { parseQueryStringToWhere } from 'utils/filter'
 
-import GamesTemplate, { GamesTemplateProps } from 'templates/Games';
-import { GetServerSidePropsContext } from 'next';
-import { parseQueryStringToWhere } from 'utils/filter';
+import GamesTemplate, { GamesTemplateProps } from 'templates/Games'
+import { GetServerSidePropsContext } from 'next'
 
 export default function GamesPage(props: GamesTemplateProps) {
-  return <GamesTemplate {...props} />;
+  return <GamesTemplate {...props} />
 }
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-  const apolloClient = initializeApollo();
+  const apolloClient = initializeApollo()
 
   const filterPrice = {
     title: 'Price',
@@ -23,9 +23,9 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
       { label: 'Under $100', name: 100 },
       { label: 'Under $150', name: 150 },
       { label: 'Under $250', name: 250 },
-      { label: 'Under $500', name: 500 },
-    ],
-  };
+      { label: 'Under $500', name: 500 }
+    ]
+  }
 
   const filterPlatforms = {
     title: 'Platforms',
@@ -34,9 +34,9 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     fields: [
       { label: 'Windows', name: 'windows' },
       { label: 'Linux', name: 'linux' },
-      { label: 'Mac OS', name: 'mac' },
-    ],
-  };
+      { label: 'Mac OS', name: 'mac' }
+    ]
+  }
 
   const filterSort = {
     title: 'Sort by price',
@@ -44,9 +44,9 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
     type: 'radio',
     fields: [
       { label: 'Lowest to highest', name: 'price:asc' },
-      { label: 'Highest to lowest', name: 'price:desc' },
-    ],
-  };
+      { label: 'Highest to lowest', name: 'price:desc' }
+    ]
+  }
 
   const filterCategories = {
     title: 'Genres',
@@ -64,30 +64,30 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
       { label: 'JRPG', name: 'jrpg' },
       { label: 'Simulation', name: 'simulation' },
       { label: 'Strategy', name: 'strategy' },
-      { label: 'Shooter', name: 'shooter' },
-    ],
-  };
+      { label: 'Shooter', name: 'shooter' }
+    ]
+  }
 
   const filterItems = [
     filterSort,
     filterPrice,
     filterPlatforms,
-    filterCategories,
-  ];
+    filterCategories
+  ]
 
   await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
-      sort: query.sort as string | null,
-    },
-  });
+      sort: query.sort as string | null
+    }
+  })
 
   return {
     props: {
       initialApolloState: apolloClient.cache.extract(),
-      filterItems,
-    },
-  };
+      filterItems
+    }
+  }
 }

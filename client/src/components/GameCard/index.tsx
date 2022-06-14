@@ -1,37 +1,27 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import { Favorite, FavoriteBorder } from '@styled-icons/material-outlined'
 
-import { Favorite, FavoriteBorder } from '@styled-icons/material-outlined';
+import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
+import CartButton from 'components/CartButton'
 
-import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon';
+import formatPrice from 'utils/format-price'
 
-import {
-  Wrapper,
-  BuyBox,
-  Content,
-  Developer,
-  FavButton,
-  ImageBox,
-  Info,
-  Price,
-  Title,
-} from './styles';
-import formatPrice from 'utils/format-price';
-import CartButton from 'components/CartButton';
+import * as S from './styles'
 
 export type GameCardProps = {
-  id: string;
-  slug: string;
-  title: string;
-  developer: string;
-  img: string;
-  price: number;
-  promotionalPrice?: number;
-  favorite?: boolean;
-  ribbon?: React.ReactNode;
-  ribbonColor?: RibbonColors;
-  ribbonSize?: RibbonSizes;
-  onFav?: () => void;
-};
+  id: string
+  slug: string
+  title: string
+  developer: string
+  img: string
+  price: number
+  promotionalPrice?: number
+  favorite?: boolean
+  ribbon?: React.ReactNode
+  ribbonColor?: RibbonColors
+  ribbonSize?: RibbonSizes
+  onFav?: () => void
+}
 
 const GameCard = ({
   id,
@@ -45,43 +35,42 @@ const GameCard = ({
   ribbon,
   ribbonColor = 'primary',
   ribbonSize = 'small',
-  onFav,
+  onFav
 }: GameCardProps) => (
-  <Wrapper>
+  <S.Wrapper>
     {!!ribbon && (
       <Ribbon color={ribbonColor} size={ribbonSize}>
         {ribbon}
       </Ribbon>
     )}
-    <Link href={`games/${slug}`} passHref>
-      <ImageBox>
+    <Link href={`game/${slug}`} passHref>
+      <S.ImageBox>
         <img src={img} alt={title} />
-      </ImageBox>
+      </S.ImageBox>
     </Link>
-    <Content>
-      <Link href={`games/${slug}`} passHref>
-        <Info>
-          <Title>{title}</Title>
-          <Developer>{developer}</Developer>
-        </Info>
+    <S.Content>
+      <Link href={`game/${slug}`} passHref>
+        <S.Info>
+          <S.Title>{title}</S.Title>
+          <S.Developer>{developer}</S.Developer>
+        </S.Info>
       </Link>
-      <FavButton onClick={onFav} role="button">
+      <S.FavButton onClick={onFav} role="button">
         {favorite ? (
           <Favorite aria-label="Remove from Wishlist" />
         ) : (
           <FavoriteBorder aria-label="Add to Wishlist" />
         )}
-      </FavButton>
-      <BuyBox>
+      </S.FavButton>
+      <S.BuyBox>
         {!!promotionalPrice && (
-          <Price isPromotional>{formatPrice(price)}</Price>
+          <S.Price isPromotional>{formatPrice(price)}</S.Price>
         )}
-        <Price>{formatPrice(promotionalPrice || price)}</Price>
-
+        <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
         <CartButton id={id} />
-      </BuyBox>
-    </Content>
-  </Wrapper>
-);
+      </S.BuyBox>
+    </S.Content>
+  </S.Wrapper>
+)
 
-export default GameCard;
+export default GameCard

@@ -1,28 +1,28 @@
-import Base from 'templates/Base';
+import Base from 'templates/Base'
 
-import { BannerProps } from 'components/Banner';
-import { GameCardProps } from 'components/GameCard';
-import { HighlightProps } from 'components/Highlight';
-import { Container } from 'components/Container';
-import BannerSlider from 'components/BannerSlider';
-import Showcase from 'components/Showcase';
+import { BannerProps } from 'components/Banner'
+import { GameCardProps } from 'components/GameCard'
+import { HighlightProps } from 'components/Highlight'
+import { Container } from 'components/Container'
+import BannerSlider from 'components/BannerSlider'
+import Showcase from 'components/Showcase'
 
-import { SectionBanner, SectionNews } from './styles';
+import * as S from './styles'
 
 export type HomeTemplateProps = {
-  banners: BannerProps[];
-  newGamesTitle: string;
-  newGames: GameCardProps[];
-  mostPopularGamesTitle: string;
-  mostPopularHighlight: HighlightProps;
-  mostPopularGames: GameCardProps[];
-  upcomingGamesTitle: string;
-  upcomingGames: GameCardProps[];
-  upcomingHighlight: HighlightProps;
-  freeGamesTitle: string;
-  freeGames: GameCardProps[];
-  freeHighlight: HighlightProps;
-};
+  banners: BannerProps[]
+  newGamesTitle: string
+  newGames: GameCardProps[]
+  mostPopularGamesTitle: string
+  mostPopularHighlight: HighlightProps
+  mostPopularGames: GameCardProps[]
+  upcomingGamesTitle: string
+  upcomingGames: GameCardProps[]
+  upcomingHighlight: HighlightProps
+  freeGamesTitle: string
+  freeGames: GameCardProps[]
+  freeHighlight: HighlightProps
+}
 
 const Home = ({
   banners,
@@ -36,18 +36,18 @@ const Home = ({
   upcomingHighlight,
   freeGamesTitle,
   freeGames,
-  freeHighlight,
+  freeHighlight
 }: HomeTemplateProps) => (
   <Base>
     <Container>
-      <SectionBanner>
+      <S.SectionBanner>
         <BannerSlider items={banners} />
-      </SectionBanner>
+      </S.SectionBanner>
     </Container>
 
-    <SectionNews>
+    <S.SectionNews>
       <Showcase title={newGamesTitle} games={newGames} color="black" />
-    </SectionNews>
+    </S.SectionNews>
 
     <Showcase
       title={mostPopularGamesTitle}
@@ -67,6 +67,6 @@ const Home = ({
       games={freeGames}
     />
   </Base>
-);
+)
 
-export default Home;
+export default Home

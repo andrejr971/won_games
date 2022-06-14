@@ -6,7 +6,7 @@ export default [
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x140',
     price: 235,
-    promotionalPrice: 215,
+    promotionalPrice: 215
   },
   {
     id: '2',
@@ -15,7 +15,7 @@ export default [
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x141',
     price: 235,
-    promotionalPrice: 215,
+    promotionalPrice: 215
   },
   {
     id: '3',
@@ -24,7 +24,7 @@ export default [
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x142',
     price: 235,
-    promotionalPrice: 215,
+    promotionalPrice: 215
   },
   {
     id: '4',
@@ -33,7 +33,7 @@ export default [
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x143',
     price: 235,
-    promotionalPrice: 215,
+    promotionalPrice: 215
   },
   {
     id: '5',
@@ -42,7 +42,7 @@ export default [
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x144',
     price: 235,
-    promotionalPrice: 215,
+    promotionalPrice: 215
   },
   {
     id: '6',
@@ -51,6 +51,6 @@ export default [
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x145',
     price: 235,
-    promotionalPrice: 215,
-  },
-];
+    promotionalPrice: 215
+  }
+]

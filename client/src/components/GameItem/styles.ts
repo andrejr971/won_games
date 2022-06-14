@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import media from 'styled-media-query';
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -10,12 +10,12 @@ export const Wrapper = styled.div`
       display: flex;
     `}
   `}
-`;
+`
 
 export const GameContent = styled.div`
   display: flex;
   width: 100%;
-`;
+`
 
 export const ImageBox = styled.div`
   ${({ theme }) => css`
@@ -36,29 +36,14 @@ export const ImageBox = styled.div`
       height: 7rem;
     `};
   `}
-`;
-
-export const Group = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-export const Remove = styled.div`
-  ${({ theme }) => css`
-    cursor: pointer;
-    color: ${theme.colors.primary};
-    font-size: ${theme.font.sizes.small};
-  `}
-`;
+`
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-`;
+`
 
 export const Title = styled.h3`
   ${({ theme }) => css`
@@ -73,7 +58,22 @@ export const Title = styled.h3`
       line-height: 2rem;
     `};
   `}
-`;
+`
+
+export const Group = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`
+
+export const Remove = styled.div`
+  ${({ theme }) => css`
+    cursor: pointer;
+    color: ${theme.colors.primary};
+    font-size: ${theme.font.sizes.small};
+  `}
+`
 
 export const Price = styled.div`
   ${({ theme }) => css`
@@ -84,7 +84,7 @@ export const Price = styled.div`
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
   `}
-`;
+`
 
 export const DownloadLink = styled.a`
   ${({ theme }) => css`
@@ -98,7 +98,7 @@ export const DownloadLink = styled.a`
       transform: translateY(-50%);
     }
   `}
-`;
+`
 
 export const PaymentContent = styled.div`
   ${({ theme }) => css`
@@ -117,7 +117,7 @@ export const PaymentContent = styled.div`
       align-items: flex-end;
     `}
   `}
-`;
+`
 
 export const CardInfo = styled.div`
   ${({ theme }) => css`
@@ -132,4 +132,4 @@ export const CardInfo = styled.div`
       margin-top: ${theme.spacings.xsmall};
     `}
   `}
-`;
+`

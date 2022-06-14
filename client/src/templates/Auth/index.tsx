@@ -1,26 +1,18 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import Heading from 'components/Heading';
-import Logo from 'components/Logo';
-import {
-  BannerBlock,
-  BannerContent,
-  Content,
-  ContentWrapper,
-  Footer,
-  Subtitle,
-  Wrapper,
-} from './styles';
+import Heading from 'components/Heading'
+import Logo from 'components/Logo'
+import * as S from './styles'
 
 type AuthProps = {
-  title: string;
-  children: React.ReactNode;
-};
+  title: string
+  children: React.ReactNode
+}
 
 const Auth = ({ title, children }: AuthProps) => (
-  <Wrapper>
-    <BannerBlock>
-      <BannerContent>
+  <S.Wrapper>
+    <S.BannerBlock>
+      <S.BannerContent>
         <Link href="/">
           <a>
             <Logo id="banner" />
@@ -29,17 +21,17 @@ const Auth = ({ title, children }: AuthProps) => (
 
         <div>
           <Heading size="huge">All your favorite games in one place</Heading>
-          <Subtitle>
+          <S.Subtitle>
             <strong>WON</strong> is the best and most complete gaming platform.
-          </Subtitle>
+          </S.Subtitle>
         </div>
 
-        <Footer>Won Games 2020 © Todos os Direitos Reservados</Footer>
-      </BannerContent>
-    </BannerBlock>
+        <S.Footer>Won Games 2020 © Todos os Direitos Reservados</S.Footer>
+      </S.BannerContent>
+    </S.BannerBlock>
 
-    <Content>
-      <ContentWrapper>
+    <S.Content>
+      <S.ContentWrapper>
         <Link href="/">
           <a>
             <Logo id="content" color="black" size="large" />
@@ -50,9 +42,9 @@ const Auth = ({ title, children }: AuthProps) => (
         </Heading>
 
         {children}
-      </ContentWrapper>
-    </Content>
-  </Wrapper>
-);
+      </S.ContentWrapper>
+    </S.Content>
+  </S.Wrapper>
+)
 
-export default Auth;
+export default Auth

@@ -1,19 +1,19 @@
-import { Wrapper } from './styles';
+import * as S from './styles'
 
 export type LogoProps = {
-  color?: 'white' | 'black';
-  size?: 'normal' | 'large';
-  hideOnMobile?: boolean;
-  id?: string;
-};
+  color?: 'white' | 'black'
+  size?: 'normal' | 'large'
+  hideOnMobile?: boolean
+  id?: string
+}
 
 const Logo = ({
   id = 'logo',
   color = 'white',
   size = 'normal',
-  hideOnMobile = false,
+  hideOnMobile = false
 }: LogoProps) => (
-  <Wrapper color={color} size={size} hideOnMobile={hideOnMobile}>
+  <S.Wrapper color={color} size={size} hideOnMobile={hideOnMobile}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -87,7 +87,7 @@ const Logo = ({
         </linearGradient>
       </defs>
     </svg>
-  </Wrapper>
-);
+  </S.Wrapper>
+)
 
-export default Logo;
+export default Logo

@@ -86,6 +86,6 @@ const Loader = () => (
       </path>
     </g>
   </svg>
-);
+)
 
-export default Loader;
+export default Loader

@@ -1,10 +1,10 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components'
 
-import { TextFieldProps } from '.';
+import { TextFieldProps } from '.'
 
-type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>;
+type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>
 
-type WrapperProps = Pick<TextFieldProps, 'disabled'> & { error?: boolean };
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & { error?: boolean }
 
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
@@ -20,7 +20,7 @@ export const InputWrapper = styled.div`
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
     }
   `}
-`;
+`
 
 export const Input = styled.input<IconPositionProps>`
   ${({ theme, iconPosition }) => css`
@@ -33,8 +33,14 @@ export const Input = styled.input<IconPositionProps>`
     border: 0;
     outline: none;
     width: ${iconPosition === 'right' ? `calc(100% - 2.2rem)` : `100%`};
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 ${theme.spacings.small}
+        ${theme.colors.lightGray} inset;
+      filter: none
+    }
   `}
-`;
+`
 
 export const Label = styled.label`
   ${({ theme }) => css`
@@ -42,7 +48,7 @@ export const Label = styled.label`
     color: ${theme.colors.black};
     cursor: pointer;
   `}
-`;
+`
 
 export const Icon = styled.div<IconPositionProps>`
   ${({ theme, iconPosition }) => css`
@@ -52,16 +58,17 @@ export const Icon = styled.div<IconPositionProps>`
 
     & > svg {
       width: 2.2rem;
+      height: 100%;
     }
   `}
-`;
+`
 
 export const Error = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.red};
     font-size: ${theme.font.sizes.xsmall};
   `}
-`;
+`
 
 const wrapperModifiers = {
   error: (theme: DefaultTheme) => css`
@@ -85,12 +92,12 @@ const wrapperModifiers = {
         color: currentColor;
       }
     }
-  `,
-};
+  `
+}
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, error, disabled }) => css`
     ${error && wrapperModifiers.error(theme)}
     ${disabled && wrapperModifiers.disabled(theme)}
   `}
-`;
+`

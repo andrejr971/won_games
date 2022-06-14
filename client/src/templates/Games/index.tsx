@@ -1,63 +1,60 @@
-import { ParsedUrlQueryInput } from 'querystring';
-import { useRouter } from 'next/router';
+import { ParsedUrlQueryInput } from 'querystring'
+import { useRouter } from 'next/router'
 
-import { useQueryGames } from 'graphql/queries/games';
-import {
-  parseQueryStringToFilter,
-  parseQueryStringToWhere,
-} from 'utils/filter';
+import { useQueryGames } from 'graphql/queries/games'
+import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
 
-import Base from 'templates/Base';
-import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown';
+import Base from 'templates/Base'
+import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 
-import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar';
-import GameCard from 'components/GameCard';
-import { Grid } from 'components/Grid';
+import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
+import GameCard from 'components/GameCard'
+import { Grid } from 'components/Grid'
 
-import { Main, ShowMore, ShowMoreButton, ShowMoreLoading } from './styles';
-import Empty from 'components/Empty';
+import * as S from './styles'
+import Empty from 'components/Empty'
 
 export type GamesTemplateProps = {
-  filterItems: ItemProps[];
-};
+  filterItems: ItemProps[]
+}
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
-  const { push, query } = useRouter();
+  const { push, query } = useRouter()
 
   const { data, loading, fetchMore } = useQueryGames({
     notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
-      sort: query.sort as string | null,
-    },
-  });
+      sort: query.sort as string | null
+    }
+  })
 
-  if (!data) return <p>loading...</p>;
+  if (!data) return <p>loading...</p>
 
-  const { games, gamesConnection } = data;
+  const { games, gamesConnection } = data
 
-  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0);
+  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0)
 
   const handleFilter = (items: ParsedUrlQueryInput) => {
     push({
       pathname: '/games',
-      query: items,
-    });
-    return;
-  };
+      query: items
+    })
+    return
+  }
 
   const handleShowMore = () => {
-    fetchMore({ variables: { limit: 15, start: data?.games.length } });
-  };
+    fetchMore({ variables: { limit: 15, start: data?.games.length } })
+  }
 
   return (
     <Base>
-      <Main>
+      <S.Main>
         <ExploreSidebar
           initialValues={parseQueryStringToFilter({
             queryString: query,
-            filterItems,
+            filterItems
           })}
           items={filterItems}
           onFilter={handleFilter}
@@ -67,10 +64,10 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           {data?.games.length ? (
             <>
               <Grid>
-                {data?.games.map(game => (
+                {data?.games.map((game) => (
                   <GameCard
-                    key={game.slug}
                     id={game.id}
+                    key={game.slug}
                     title={game.name}
                     slug={game.slug}
                     developer={game.developers[0].name}
@@ -80,19 +77,19 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                 ))}
               </Grid>
               {hasMoreGames && (
-                <ShowMore>
+                <S.ShowMore>
                   {loading ? (
-                    <ShowMoreLoading
+                    <S.ShowMoreLoading
                       src="/img/dots.svg"
                       alt="Loading more games..."
                     />
                   ) : (
-                    <ShowMoreButton role="button" onClick={handleShowMore}>
+                    <S.ShowMoreButton role="button" onClick={handleShowMore}>
                       <p>Show More</p>
                       <ArrowDown size={35} />
-                    </ShowMoreButton>
+                    </S.ShowMoreButton>
                   )}
-                </ShowMore>
+                </S.ShowMore>
               )}
             </>
           ) : (
@@ -103,9 +100,9 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
             />
           )}
         </section>
-      </Main>
+      </S.Main>
     </Base>
-  );
-};
+  )
+}
 
-export default GamesTemplate;
+export default GamesTemplate
