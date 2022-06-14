@@ -32,7 +32,7 @@ export default function Index(props: GameTemplateProps) {
   return <Game {...props} />
 }
 
-// gerar em build time (/game/bla, /bame/foo ...)
+// gerar em build time (/games/bla, /bame/foo ...)
 export async function getStaticPaths() {
   const { data } = await apolloClient.query<QueryGames, QueryGamesVariables>({
     query: QUERY_GAMES,

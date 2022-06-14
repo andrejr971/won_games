@@ -162,7 +162,7 @@ exports[`<GameCard /> should render correctly 1`] = `
 >
   <a
     class="c1"
-    href="/game/population-zero"
+    href="/games/population-zero"
   >
     <img
       alt="Population Zero"
@@ -174,7 +174,7 @@ exports[`<GameCard /> should render correctly 1`] = `
   >
     <a
       class="c3"
-      href="/game/population-zero"
+      href="/games/population-zero"
     >
       <h3
         class="c4"

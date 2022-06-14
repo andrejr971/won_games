@@ -3,7 +3,7 @@ export default [
     img: 'https://source.unsplash.com/user/willianjusten/151x70',
     title: 'Red Dead Redemption 2',
     price: 'R$ 215,00',
-    downloadLink: 'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
+    downloadLink: 'https://wongames.com/games/download/yuYT56Tgh431LkjhNBgdf',
     paymentInfo: {
       flag: 'mastercard',
       img: '/img/master-card.png',
@@ -15,7 +15,7 @@ export default [
     img: 'https://source.unsplash.com/user/willianjusten/151x70',
     title: 'Red Dead Redemption 2',
     price: 'R$ 215,00',
-    downloadLink: 'https://wongames.com/game/download/kjhejl867asd76DEh',
+    downloadLink: 'https://wongames.com/games/download/kjhejl867asd76DEh',
     paymentInfo: {
       flag: 'visa',
       img: '/img/visa.png',

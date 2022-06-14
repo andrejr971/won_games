@@ -19,12 +19,12 @@
                 <mxCell id="6" value="GetStaticProps" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="275" y="-970" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <UserObject label="Gera as urls&lt;br&gt;&lt;br&gt;/game/diablo&lt;br&gt;/game/warcraft" placeholders="1" name="Variable" id="8">
+                <UserObject label="Gera as urls&lt;br&gt;&lt;br&gt;/games/diablo&lt;br&gt;/games/warcraft" placeholders="1" name="Variable" id="8">
                     <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" parent="1" vertex="1">
                         <mxGeometry x="10" y="-920" width="170" height="100" as="geometry"/>
                     </mxCell>
                 </UserObject>
-                <UserObject label="Gera as páginas estáticas&lt;br&gt;&lt;br&gt;/game/diablo/index.html&lt;br&gt;/game/warcraft/index.html&lt;br&gt;" placeholders="1" name="Variable" id="9">
+                <UserObject label="Gera as páginas estáticas&lt;br&gt;&lt;br&gt;/games/diablo/index.html&lt;br&gt;/games/warcraft/index.html&lt;br&gt;" placeholders="1" name="Variable" id="9">
                     <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;" parent="1" vertex="1">
                         <mxGeometry x="250" y="-920" width="170" height="100" as="geometry"/>
                     </mxCell>
@@ -38,7 +38,7 @@
                 <mxCell id="47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="12" target="15" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="Usuário entra na página /game/diablo" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="12" value="Usuário entra na página /games/diablo" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="30" y="-680" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="15" value="Recebe conteúdo estático (happy path)" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -47,7 +47,7 @@
                 <mxCell id="46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="16" target="18" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="Usuário entra na página /game/foo" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="16" value="Usuário entra na página /games/foo" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="30" y="-570" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="18" target="27" edge="1">

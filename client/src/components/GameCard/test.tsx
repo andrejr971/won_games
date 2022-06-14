@@ -31,7 +31,7 @@ describe('<GameCard />', () => {
 
     expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
       'href',
-      `/game/${props.slug}`
+      `/games/${props.slug}`
     )
 
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument()
