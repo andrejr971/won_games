@@ -2,28 +2,22 @@ import { initializeApollo } from 'utils/apollo'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { gamesMapper, highlightMapper } from 'utils/mappers'
+import Success, { SuccessTemplateProps } from 'templates/Success'
 
-import Cart, { CartProps } from 'templates/Cart'
-
-import { GetServerSidePropsContext } from 'next'
-import protectedRoutes from 'utils/protected-routes'
-
-export default function CartPage(props: CartProps) {
-  return <Cart {...props} />
+export default function SuccessPage(props: SuccessTemplateProps) {
+  return <Success {...props} />
 }
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const session = await protectedRoutes(context)
-
-  const apolloClient = initializeApollo(null, session)
+export async function getStaticProps() {
+  const apolloClient = initializeApollo()
 
   const { data } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED
   })
 
   return {
+    revalidate: 60 * 60,
     props: {
-      session,
       recommendedTitle: data.recommended?.section?.title,
       recommendedGames: gamesMapper(data.recommended?.section?.games),
       recommendedHighlight: highlightMapper(
