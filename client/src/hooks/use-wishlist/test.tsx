@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { MockedProvider } from '@apollo/client/testing'
 import { renderHook } from '@testing-library/react-hooks'
 import { act, waitFor } from 'utils/test-utils'
@@ -11,6 +10,7 @@ import {
   wishlistMock
 } from './mock'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const useSession = jest.spyOn(require('next-auth/client'), 'useSession')
 const session = { jwt: '123', user: { email: 'lorem@ipsum.com' } }
 useSession.mockImplementation(() => [session])
@@ -27,8 +27,10 @@ describe('useWishlist', () => {
       wrapper
     })
 
+    // it starts loading the data
     expect(result.current.loading).toBe(true)
 
+    // wait until get the data
     await waitForNextUpdate()
 
     expect(result.current.items).toStrictEqual([
@@ -48,6 +50,7 @@ describe('useWishlist', () => {
       wrapper
     })
 
+    // wait until get the data
     await waitForNextUpdate()
 
     expect(result.current.isInWishlist('1')).toBe(true)
@@ -71,11 +74,10 @@ describe('useWishlist', () => {
     })
 
     await waitForNextUpdate()
-
     expect(result.current.items).toStrictEqual([wishlistItems[2]])
   })
 
-  it('should add item in wishlist updating a new list', async () => {
+  it('should add item in wishlist updating the current list', async () => {
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <MockedProvider mocks={[wishlistMock, updateWishlistMock]}>
         <WishlistProvider>{children}</WishlistProvider>
@@ -86,6 +88,7 @@ describe('useWishlist', () => {
       wrapper
     })
 
+    // wait for the data to load
     await waitForNextUpdate()
 
     act(() => {
@@ -108,6 +111,7 @@ describe('useWishlist', () => {
       wrapper
     })
 
+    // wait for the data to load
     await waitForNextUpdate()
 
     act(() => {

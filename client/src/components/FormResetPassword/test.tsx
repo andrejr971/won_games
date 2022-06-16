@@ -1,9 +1,10 @@
 import 'server.mock'
+import { signIn } from 'next-auth/client'
+
 import userEvent from '@testing-library/user-event'
 import { render, screen, waitFor } from 'utils/test-utils'
 
 import FormResetPassword from '.'
-import { signIn } from 'next-auth/client'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
@@ -17,7 +18,7 @@ jest.mock('next-auth/client', () => ({
   signIn: jest.fn()
 }))
 
-describe('<FormResetPassword />', () => {
+describe('<FormResetPassword>', () => {
   it('should render the form', () => {
     render(<FormResetPassword />)
 
@@ -28,7 +29,7 @@ describe('<FormResetPassword />', () => {
     ).toBeInTheDocument()
   })
 
-  it('should show validation erros', async () => {
+  it('should show validation errors', async () => {
     render(<FormResetPassword />)
 
     await userEvent.type(screen.getByPlaceholderText('Password'), '123')

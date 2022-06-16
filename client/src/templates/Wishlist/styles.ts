@@ -5,6 +5,7 @@ export const Loading = styled.div`
   align-items: center;
   justify-content: center;
   height: 40rem;
+
   svg {
     height: 10rem;
     width: 10rem;

@@ -1,6 +1,6 @@
 import { ApolloClient, HttpLink, NormalizedCacheObject } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-import { Session } from 'next-auth/client'
+import { Session } from 'next-auth'
 import { useMemo } from 'react'
 import apolloCache from './apolloCache'
 
@@ -14,7 +14,6 @@ function createApolloClient(session?: Session | null) {
   const authLink = setContext((_, { headers, session: clientSession }) => {
     const jwt = session?.jwt || clientSession?.jwt || ''
     const authorization = jwt ? `Bearer ${jwt}` : ''
-
     return { headers: { ...headers, authorization } }
   })
 
@@ -46,7 +45,7 @@ export function initializeApollo(
   return apolloClient
 }
 
-export function useApollo(initialState = null, session?: Session | null) {
+export function useApollo(initialState = null, session?: Session) {
   const store = useMemo(() => initializeApollo(initialState, session), [
     initialState,
     session

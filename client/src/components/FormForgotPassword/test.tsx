@@ -1,5 +1,5 @@
-import 'server.mock'
 import userEvent from '@testing-library/user-event'
+import 'server.mock'
 import { render, screen } from 'utils/test-utils'
 
 import FormForgotPassword from '.'
@@ -17,7 +17,6 @@ describe('<FormForgotPassword />', () => {
     render(<FormForgotPassword />)
 
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
-
     expect(
       screen.getByRole('button', { name: /send email/i })
     ).toBeInTheDocument()
@@ -38,7 +37,7 @@ describe('<FormForgotPassword />', () => {
     ).toBeInTheDocument()
   })
 
-  it('should invalidate the email', async () => {
+  it('should show an invalid email', async () => {
     render(<FormForgotPassword />)
 
     await userEvent.type(screen.getByPlaceholderText(/email/i), 'invalid')

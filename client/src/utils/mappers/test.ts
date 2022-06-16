@@ -141,7 +141,7 @@ describe('cartMapper()', () => {
 
 describe('ordersMapper()', () => {
   it('should return empty array if no orders', () => {
-    expect(cartMapper(undefined)).toStrictEqual([])
+    expect(ordersMapper(undefined)).toStrictEqual([])
   })
 
   it('should return mapped items', () => {
@@ -176,7 +176,7 @@ describe('ordersMapper()', () => {
         id: '1',
         paymentInfo: {
           flag: 'visa',
-          img: '/img/visa.png',
+          img: '/img/cards/visa.png',
           number: '**** **** **** 4242',
           purchaseDate: 'Purchase made on Apr 14, 2021'
         },
@@ -237,7 +237,7 @@ describe('ordersMapper()', () => {
             downloadLink:
               'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
             img: 'http://localhost:1337/image.jpg',
-            price: 'Free'
+            price: '$0.00'
           }
         ]
       }

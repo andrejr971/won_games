@@ -7,7 +7,7 @@ import {
 
 describe('validations', () => {
   describe('signInValidate()', () => {
-    it('validate empty fields', () => {
+    it('should validate empty fields', () => {
       const values = { email: '', password: '' }
 
       expect(signInValidate(values)).toMatchObject({

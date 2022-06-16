@@ -47,7 +47,6 @@ const FormSignUp = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-
     setFormError('')
 
     const errors = signUpValidate(values)
@@ -82,24 +81,24 @@ const FormSignUp = () => {
           name="username"
           placeholder="Username"
           type="text"
-          onInputChange={(v) => handleInput('username', v)}
           error={fieldError?.username}
+          onInputChange={(v) => handleInput('username', v)}
           icon={<AccountCircle />}
         />
         <TextField
           name="email"
           placeholder="Email"
-          type="email"
-          onInputChange={(v) => handleInput('email', v)}
+          type="text"
           error={fieldError?.email}
+          onInputChange={(v) => handleInput('email', v)}
           icon={<Email />}
         />
         <TextField
           name="password"
           placeholder="Password"
           type="password"
-          onInputChange={(v) => handleInput('password', v)}
           error={fieldError?.password}
+          onInputChange={(v) => handleInput('password', v)}
           icon={<Lock />}
         />
         <TextField

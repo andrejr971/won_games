@@ -8,15 +8,14 @@ import { Email, Lock, ErrorOutline } from '@styled-icons/material-outlined'
 import { FormLink, FormWrapper, FormLoading, FormError } from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
-import { FieldErrors, signInValidate } from 'utils/validations'
 
 import * as S from './styles'
+import { FieldErrors, signInValidate } from 'utils/validations'
 
 const FormSignIn = () => {
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [values, setValues] = useState({ email: '', password: '' })
-
   const [loading, setLoading] = useState(false)
   const routes = useRouter()
   const { push, query } = routes
@@ -63,22 +62,21 @@ const FormSignIn = () => {
           <ErrorOutline /> {formError}
         </FormError>
       )}
-
       <form onSubmit={handleSubmit}>
         <TextField
           name="email"
           placeholder="Email"
           type="email"
-          onInputChange={(v) => handleInput('email', v)}
           error={fieldError?.email}
+          onInputChange={(v) => handleInput('email', v)}
           icon={<Email />}
         />
         <TextField
           name="password"
           placeholder="Password"
           type="password"
-          onInputChange={(v) => handleInput('password', v)}
           error={fieldError?.password}
+          onInputChange={(v) => handleInput('password', v)}
           icon={<Lock />}
         />
         <Link href="/forgot-password" passHref>

@@ -2,6 +2,13 @@ import { render, screen, fireEvent } from 'utils/test-utils'
 
 import Menu from '.'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter')
+
+useRouter.mockImplementation(() => ({
+  query: {}
+}))
+
 describe('<Menu />', () => {
   it('should render the menu', () => {
     render(<Menu />)
@@ -42,7 +49,7 @@ describe('<Menu />', () => {
     expect(screen.getAllByText(/sign in/i)).toHaveLength(2)
   })
 
-  it('should show wishlight and account when logged in', () => {
+  it('should show wishlist and account when logged in', () => {
     render(<Menu username="will" />)
 
     expect(screen.getAllByText(/my profile/i)).toHaveLength(2)

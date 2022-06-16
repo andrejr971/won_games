@@ -15,8 +15,7 @@ const FormResetPassword = () => {
   const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [values, setValues] = useState({ password: '', confirm_password: '' })
   const [loading, setLoading] = useState(false)
-  const routes = useRouter()
-  const { query } = routes
+  const { query } = useRouter()
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -26,7 +25,7 @@ const FormResetPassword = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = resetValidate(values) // validate after
+    const errors = resetValidate(values)
 
     if (Object.keys(errors).length) {
       setFieldError(errors)

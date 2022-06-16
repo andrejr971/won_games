@@ -15,19 +15,24 @@ const WishlistButton = ({
   hasText,
   size = 'small'
 }: WishlistButtonProps) => {
-  const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist()
   const [session] = useSession()
   const [loading, setLoading] = useState(false)
-
-  const ButtonText = isInWishlist(id)
-    ? 'Remove from Wishlist'
-    : 'Add to Wishlist'
+  const {
+    isInWishlist,
+    addToWishlist,
+    removeFromWishlist,
+    loading: loadingApollo
+  } = useWishlist()
 
   const handleClick = async () => {
     setLoading(true)
     isInWishlist(id) ? await removeFromWishlist(id) : await addToWishlist(id)
     setLoading(false)
   }
+
+  const ButtonText = isInWishlist(id)
+    ? 'Remove from Wishlist'
+    : 'Add to Wishlist'
 
   if (!session) return null
 
@@ -42,9 +47,11 @@ const WishlistButton = ({
           <FavoriteBorder aria-label={ButtonText} />
         )
       }
+      onClick={handleClick}
       minimal
       size={size}
-      onClick={handleClick}
+      disabled={loadingApollo}
+      style={{ filter: 'none' }}
     >
       {hasText && ButtonText}
     </Button>

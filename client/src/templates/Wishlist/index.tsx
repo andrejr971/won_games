@@ -50,7 +50,6 @@ const Wishlist = ({
             hasLink
           />
         )}
-
         <Divider />
       </Container>
 

@@ -1,12 +1,13 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 import CartButton from 'components/CartButton'
+import WishlistButton from 'components/WishlistButton'
 
 import formatPrice from 'utils/format-price'
 
 import * as S from './styles'
-import WishlistButton from 'components/WishlistButton'
 
 export type GameCardProps = {
   id: string
@@ -16,11 +17,9 @@ export type GameCardProps = {
   img: string
   price: number
   promotionalPrice?: number
-  favorite?: boolean
   ribbon?: React.ReactNode
   ribbonColor?: RibbonColors
   ribbonSize?: RibbonSizes
-  onFav?: () => void
 }
 
 const GameCard = ({
@@ -41,13 +40,13 @@ const GameCard = ({
         {ribbon}
       </Ribbon>
     )}
-    <Link href={`games/${slug}`} passHref>
+    <Link href={`/game/${slug}`} passHref>
       <S.ImageBox>
-        <img src={img} alt={title} />
+        <Image src={img} alt={title} layout="fill" objectFit="cover" />
       </S.ImageBox>
     </Link>
     <S.Content>
-      <Link href={`games/${slug}`} passHref>
+      <Link href={`/game/${slug}`} passHref>
         <S.Info>
           <S.Title>{title}</S.Title>
           <S.Developer>{developer}</S.Developer>

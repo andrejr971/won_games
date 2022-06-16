@@ -5,8 +5,8 @@ import { gamesMapper, highlightMapper } from 'utils/mappers'
 
 import Cart, { CartProps } from 'templates/Cart'
 
-import { GetServerSidePropsContext } from 'next'
 import protectedRoutes from 'utils/protected-routes'
+import { GetServerSidePropsContext } from 'next'
 
 export default function CartPage(props: CartProps) {
   return <Cart {...props} />
@@ -14,7 +14,6 @@ export default function CartPage(props: CartProps) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await protectedRoutes(context)
-
   const apolloClient = initializeApollo(null, session)
 
   const { data } = await apolloClient.query<QueryRecommended>({

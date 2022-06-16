@@ -21,7 +21,7 @@ const OrdersList = ({ items = [] }: OrdersListProps) => (
 
     {items.length ? (
       items.map((order) => {
-        return order.games?.map((game) => (
+        return order.games.map((game) => (
           <GameItem key={order.id} {...game} paymentInfo={order.paymentInfo} />
         ))
       })

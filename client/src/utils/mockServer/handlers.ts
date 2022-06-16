@@ -36,6 +36,7 @@ export const handlers = [
         )
       }
 
+      // quando for sucesso
       return res(
         ctx.status(200),
         ctx.json({
@@ -50,7 +51,6 @@ export const handlers = [
     (req, res, ctx) => {
       const { code } = req.body
 
-      // quando der erro
       if (code === 'wrong_code') {
         return res(
           ctx.status(400),

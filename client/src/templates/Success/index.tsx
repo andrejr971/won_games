@@ -1,16 +1,16 @@
 import { Done } from '@styled-icons/material-outlined/Done'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 import Base from 'templates/Base'
 
 import { Container } from 'components/Container'
 import { GameCardProps } from 'components/GameCard'
 import Showcase from 'components/Showcase'
-import { useCart } from 'hooks/use-cart'
-import { useEffect } from 'react'
 import { HighlightProps } from 'components/Highlight'
 
 import * as S from './styles'
+import { useCart } from 'hooks/use-cart'
 
 export type SuccessTemplateProps = {
   recommendedTitle: string
